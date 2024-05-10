@@ -79,7 +79,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\EntityLayer\Category.cs" />
     <Compile Include="Models\EntityLayer\Producer.cs" />
+    <Compile Include="Models\EntityLayer\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

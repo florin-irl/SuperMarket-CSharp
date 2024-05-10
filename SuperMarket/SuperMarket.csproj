@@ -85,6 +85,7 @@
     <Compile Include="Models\EntityLayer\Product.cs" />
     <Compile Include="Models\EntityLayer\ProductReceipt.cs" />
     <Compile Include="Models\EntityLayer\Receipt.cs" />
+    <Compile Include="Models\EntityLayer\Stock.cs" />
     <Compile Include="Models\EntityLayer\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

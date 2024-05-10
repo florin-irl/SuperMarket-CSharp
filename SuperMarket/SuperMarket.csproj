@@ -86,6 +86,7 @@
     <Compile Include="Models\DataAccessLayer\ProductDAL.cs" />
     <Compile Include="Models\DataAccessLayer\ProductReceiptDAL.cs" />
     <Compile Include="Models\DataAccessLayer\ReceiptDAL.cs" />
+    <Compile Include="Models\DataAccessLayer\StockDAL.cs" />
     <Compile Include="Models\EntityLayer\Category.cs" />
     <Compile Include="Models\EntityLayer\Offer.cs" />
     <Compile Include="Models\EntityLayer\Producer.cs" />

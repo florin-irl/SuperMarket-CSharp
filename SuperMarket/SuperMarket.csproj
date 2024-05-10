@@ -83,6 +83,7 @@
     <Compile Include="Models\DataAccessLayer\DALHelper.cs" />
     <Compile Include="Models\DataAccessLayer\OfferDAL.cs" />
     <Compile Include="Models\DataAccessLayer\ProducerDAL.cs" />
+    <Compile Include="Models\DataAccessLayer\ProductDAL.cs" />
     <Compile Include="Models\DataAccessLayer\ProductReceiptDAL.cs" />
     <Compile Include="Models\EntityLayer\Category.cs" />
     <Compile Include="Models\EntityLayer\Offer.cs" />

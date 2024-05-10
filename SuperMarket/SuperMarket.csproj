@@ -79,6 +79,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DataAccessLayer\DALHelper.cs" />
     <Compile Include="Models\EntityLayer\Category.cs" />
     <Compile Include="Models\EntityLayer\Offer.cs" />
     <Compile Include="Models\EntityLayer\Producer.cs" />
@@ -115,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\BusinessLogicLayer\" />
-    <Folder Include="Models\DataAccessLayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

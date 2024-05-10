@@ -15,6 +15,7 @@ namespace SuperMarket.Models.EntityLayer
         public DateTime ExpirationDate { get; set; }
         public int ProductId { get; set; }
         public decimal AquisitionCost { get; set; }
+        public decimal SellingPrice => AquisitionCost * Convert.ToDecimal(1.2);
         public bool IsActive { get; set; }
 
     }

@@ -1,0 +1,127 @@
+﻿<Page x:Class="SuperMarket.Views.EditPages.EditStockPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperMarket.Views.EditPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="675" d:DesignWidth="1200"
+      Title="EditStockPage">
+    <Grid Background="White">
+        <Border Width="300"
+    Height="600"
+    Background="White"
+    CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                      Direction="-90"
+                      RenderingBias="Quality"
+                      ShadowDepth="2"
+                      Color="Gray"/>
+            </Border.Effect>
+            <StackPanel Orientation="Vertical"
+        Margin="20">
+                <TextBlock x:Name="tbStockManagement" Text="Stock Management"
+       FontSize="20"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Top"
+       FontWeight="Bold"
+       Padding="10"/>
+                <Grid VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Quantity"
+           Grid.Row="0"
+           Margin="0,15"
+           HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtStockQuantity"
+         Grid.Column="1"
+         Grid.Row="1"
+         Padding="0,5"
+         Width="255"
+         BorderThickness="0,0,0,1"
+         HorizontalAlignment="Left"
+         Text=""/>
+                    <TextBlock Text="Unit"
+                               Grid.Row="2"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtStockUnit"
+                             Grid.Column="1"
+                             Grid.Row="3"
+                             Padding="0,5"
+                             Width="255"
+                             BorderThickness="0,0,0,1"
+                             HorizontalAlignment="Left"
+                             Text=""/>
+                    <TextBlock Text="Supply Date"
+                               Grid.Row="4"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <DatePicker x:Name="dbSupplyDate"
+Grid.Column="1"
+Grid.Row="5"
+Padding="0,5"
+Width="255"
+BorderThickness="0,0,0,1"
+HorizontalAlignment="Left"/>
+                    <TextBlock Text="Expiry Date"
+                               Grid.Row="6"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <DatePicker x:Name="dbExpiryDate"
+                                Grid.Column="1"
+                                Grid.Row="7"
+                                Padding="0,5"
+                                Width="255"
+                                BorderThickness="0,0,0,1"
+                                HorizontalAlignment="Left"/>
+                    <TextBlock Text="Product Id"
+                               Grid.Row="8"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtProductId"
+                             Grid.Column="1"
+                             Grid.Row="9"
+                             Padding="0,5"
+                             Width="255"
+                             BorderThickness="0,0,0,1"
+                             HorizontalAlignment="Left"
+                             Text=""/>
+                    <TextBlock Text="Aquistion Cost"
+                               Grid.Row="10"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAquistionCost"
+                             Grid.Column="1"
+                             Grid.Row="11"
+                             Padding="0,5"
+                             Width="255"
+                             BorderThickness="0,0,0,1"
+                             HorizontalAlignment="Left"
+                             Text=""/>
+
+                </Grid>
+                <Button x:Name="SaveBtn"
+Content="Save"
+Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

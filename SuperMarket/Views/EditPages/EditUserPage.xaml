@@ -67,9 +67,6 @@ Text=""/>
                                  BorderThickness="0,0,0,1"
                                  HorizontalAlignment="Left"
                                  Password=""/>
-                    
-
-
                 </Grid>
                 <Button x:Name="SaveBtn"
 Content="Save"

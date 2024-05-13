@@ -71,42 +71,125 @@ Background="Black"
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="Stocks" FontSize="15">
-                        <DataGrid x:Name="dgStocks"
+                        <StackPanel>
+                            <DataGrid x:Name="dgStocks"
           AutoGenerateColumns="False"
-          CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ProductId" Width="75"/>
-                                <DataGridTextColumn Header="Quantity" Width="75"/>
-                                <DataGridTextColumn Header="Unit" Width="75"/>
-                                <DataGridTextColumn Header="Supply Date" Width="125"/>
-                                <DataGridTextColumn Header="Expiration Date" Width="125"/>
-                                <DataGridTextColumn Header="Aquistion Cost" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+          CanUserAddRows="False"
+                                      Height="250">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ProductId" Width="75"/>
+                                    <DataGridTextColumn Header="Quantity" Width="75"/>
+                                    <DataGridTextColumn Header="Unit" Width="75"/>
+                                    <DataGridTextColumn Header="Supply Date" Width="125"/>
+                                    <DataGridTextColumn Header="Expiration Date" Width="125"/>
+                                    <DataGridTextColumn Header="Aquistion Cost" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddStockBtn"
+                                    Content="Add stock"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyStockBtn"
+                                        Content="Modify stock"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteStockBtn"
+                                        Content="Delete stock"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Producers" FontSize="15">
-                        <DataGrid x:Name="dgProducers"
+                        <StackPanel>
+                            <DataGrid x:Name="dgProducers"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Width="500"/>
-                                <DataGridTextColumn Header="Country" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                  CanUserAddRows="False"
+                                  Height="250">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" Width="500"/>
+                                    <DataGridTextColumn Header="Country" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddProducerBtn"
+                                    Content="Add producer"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyProducerBtn"
+                                        Content="Modify producer"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteProducerBtn"
+                                        Content="Delete producer"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Categories" FontSize="15">
+                        <StackPanel>
                         <DataGrid x:Name="dgCategories"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
+                                  CanUserAddRows="False"
+                                  Height="250">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddCategoryBtn"
+                                    Content="Add category"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyCategoryBtn"
+                                        Content="Modify category"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteCategoryBtn"
+                                        Content="Delete category"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Products" FontSize="15">
+                        <StackPanel>
                         <DataGrid x:Name="dgProducts"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
+                                  CanUserAddRows="False"
+                                  Height="250">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="100"/>
                                 <DataGridTextColumn Header="Barcode" Width="300"/>
@@ -115,34 +198,116 @@ Background="Black"
                                 <DataGridTextColumn Header="Price" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddProductBtn"
+                                    Content="Add product"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyProductBtn"
+                                        Content="Modify product"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteProductBtn"
+                                        Content="Delete product"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Receipts" FontSize="15">
-                        <DataGrid x:Name="dgReceipts"
+                        <StackPanel>
+                            <DataGrid x:Name="dgReceipts"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Issue Date" Width="200"/>
-                                <DataGridTextColumn Header="User" Width="200"/>
-                                <DataGridTextColumn Header="Total Price" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                  CanUserAddRows="False"
+                                  Height="250">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Issue Date" Width="200"/>
+                                    <DataGridTextColumn Header="User" Width="200"/>
+                                    <DataGridTextColumn Header="Total Price" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddReceiptBtn"
+                                    Content="Add receipt"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyReceiptBtn"
+                                        Content="Modify receipt"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteReceiptBtn"
+                                        Content="Delete receipt"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="ProductReceipts" FontSize="15">
-                        <DataGrid x:Name="dgProductReceipts"
+                        <StackPanel>
+                            <DataGrid x:Name="dgProductReceipts"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ReceiptId" Width="100"/>
-                                <DataGridTextColumn Header="ProductId" Width="100"/>
-                                <DataGridTextColumn Header="Quantity" Width="100"/>
-                                <DataGridTextColumn Header="Price" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                  CanUserAddRows="False"
+                                  Height="250">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ReceiptId" Width="100"/>
+                                    <DataGridTextColumn Header="ProductId" Width="100"/>
+                                    <DataGridTextColumn Header="Quantity" Width="100"/>
+                                    <DataGridTextColumn Header="Price" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddProductReceiptBtn"
+                                    Content="Add PR"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyProductReceiptBtn"
+                                        Content="Modify PR"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteProductReceiptBtn"
+                                        Content="Delete PR"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Offers" FontSize="15">
+                        <StackPanel>
                         <DataGrid x:Name="dgOffers"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
+                                  CanUserAddRows="False"
+                                  Height="250">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Product" Width="100"/>
                                 <DataGridTextColumn Header="Discount" Width="100"/>
@@ -151,8 +316,70 @@ Background="Black"
                                 <DataGridTextColumn Header="Reason" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddOfferBtn"
+                                    Content="Add offer"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyOfferBtn"
+                                        Content="Modify offer"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteOfferBtn"
+                                        Content="Delete offer"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
+                <TextBlock Text="Advanced Queries"
+           FontSize="20"
+           HorizontalAlignment="Left"
+           Foreground="Black"
+           VerticalAlignment="Top"
+           Padding="10"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button x:Name="ProducerCategoryProductsBtn"
+                            Content="List Products by Producers"
+                            Foreground="White"
+                            Background="Black"
+                            Margin="0,25"
+                            Width="250"
+                            Height="35"/>
+                    <Button x:Name="ValueOfCategoryBtn"
+                            Content="List Value of Category"
+                            Foreground="White"
+                            Background="Black"
+                            Margin="0,25"
+                            Width="250"
+                            Height="35"/>
+                    <Button x:Name="ValueByMonthUserBtn"
+                            Content="Profit by User/Month"
+                            Foreground="White"
+                            Background="Black"
+                            Margin="0,25"
+                            Width="250"
+                            Height="35"/>
+                    <Button x:Name="HighestValueReceiptByDateBtn"
+                            Content="Info of Heighest Value Receipt by Date"
+                            Foreground="White"
+                            Background="Black"
+                            Margin="0,25"
+                            Width="250"
+                            Height="35"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>

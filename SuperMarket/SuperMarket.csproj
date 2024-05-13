@@ -79,6 +79,9 @@
     <Compile Include="Views\EditPages\EditOffersPage.xaml.cs">
       <DependentUpon>EditOffersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditPages\EditProducersPage.xaml.cs">
+      <DependentUpon>EditProducersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditPages\EditOffersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditPages\EditProducersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

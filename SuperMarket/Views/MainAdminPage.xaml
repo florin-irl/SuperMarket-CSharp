@@ -28,18 +28,47 @@
                            FontWeight="Bold"
                            Padding="10"/>
                 <TabControl
-                    Height="250">
+                    Height="350">
                     <TabItem Header="Users" FontSize="15">
                         <!--De facut data binding-->
-                        <DataGrid x:Name="dgUsers"
+                        <StackPanel>
+                            <DataGrid x:Name="dgUsers"
                                   AutoGenerateColumns="False"
-                                  CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Admin" Width="100"/>
-                                <DataGridTextColumn Header="Username" Width="500"/>
-                                <DataGridTextColumn Header="Password" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                  CanUserAddRows="False"
+                                      Height="250">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Admin" Width="100"/>
+                                    <DataGridTextColumn Header="Username" Width="500"/>
+                                    <DataGridTextColumn Header="Password" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="AddUserBtn"
+                                    Content="Add user"
+                                    Foreground="White"
+Background="Black"
+    Margin="0,25"
+    Height="35"
+    Width="250"/>
+                                <Button x:Name="ModifyUserBtn"
+                                        Content="Modify user"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                                <Button x:Name="DeleteUserBtn"
+                                        Content="Delete user"
+                                    Foreground="White"
+                                        Background="Black"
+                                        Margin="0,25"
+                                        Height="35"
+                                        Width="250"/>
+                            </StackPanel>
+                            
+                            
+                        </StackPanel>
                     </TabItem>
                     <TabItem Header="Stocks" FontSize="15">
                         <DataGrid x:Name="dgStocks"

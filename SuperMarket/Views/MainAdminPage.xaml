@@ -1,0 +1,130 @@
+﻿<Page x:Class="SuperMarket.Views.MainAdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperMarket.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="675" d:DesignWidth="1200"
+      Title="MainAdminPage">
+
+    <Grid Background="White">
+        <Border Width="1125"
+                Height="600"
+                Background="White"
+                CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="2"
+                                  Color="Gray"></DropShadowEffect>
+            </Border.Effect>
+            <StackPanel Margin="10">
+                <TextBlock Text="Hypermarket Admin Panel"
+                           FontSize="25"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontWeight="Bold"
+                           Padding="10"/>
+                <TabControl
+                    Height="250">
+                    <TabItem Header="Users" FontSize="15">
+                        <!--De facut data binding-->
+                        <DataGrid x:Name="dgUsers"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Admin" Width="100"/>
+                                <DataGridTextColumn Header="Username" Width="500"/>
+                                <DataGridTextColumn Header="Password" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Stocks" FontSize="15">
+                        <DataGrid x:Name="dgStocks"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ProductId" Width="75"/>
+                                <DataGridTextColumn Header="Quantity" Width="75"/>
+                                <DataGridTextColumn Header="Unit" Width="75"/>
+                                <DataGridTextColumn Header="Supply Date" Width="125"/>
+                                <DataGridTextColumn Header="Expiration Date" Width="125"/>
+                                <DataGridTextColumn Header="Aquistion Cost" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Producers" FontSize="15">
+                        <DataGrid x:Name="dgProducers"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Width="500"/>
+                                <DataGridTextColumn Header="Country" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Categories" FontSize="15">
+                        <DataGrid x:Name="dgCategories"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Products" FontSize="15">
+                        <DataGrid x:Name="dgProducts"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Width="100"/>
+                                <DataGridTextColumn Header="Barcode" Width="300"/>
+                                <DataGridTextColumn Header="Category" Width="200"/>
+                                <DataGridTextColumn Header="Producer" Width="200"/>
+                                <DataGridTextColumn Header="Price" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Receipts" FontSize="15">
+                        <DataGrid x:Name="dgReceipts"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Issue Date" Width="200"/>
+                                <DataGridTextColumn Header="User" Width="200"/>
+                                <DataGridTextColumn Header="Total Price" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="ProductReceipts" FontSize="15">
+                        <DataGrid x:Name="dgProductReceipts"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ReceiptId" Width="100"/>
+                                <DataGridTextColumn Header="ProductId" Width="100"/>
+                                <DataGridTextColumn Header="Quantity" Width="100"/>
+                                <DataGridTextColumn Header="Price" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Offers" FontSize="15">
+                        <DataGrid x:Name="dgOffers"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Product" Width="100"/>
+                                <DataGridTextColumn Header="Discount" Width="100"/>
+                                <DataGridTextColumn Header="Start Date" Width="250"/>
+                                <DataGridTextColumn Header="End Date" Width="250"/>
+                                <DataGridTextColumn Header="Reason" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

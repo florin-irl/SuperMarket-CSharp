@@ -29,7 +29,6 @@ namespace SuperMarket.Models.DataAccessLayer
                     product.Barcode = reader.GetString(2);
                     product.CategoryId = reader.GetInt32(3);
                     product.ProducerId = reader.GetInt32(4);
-                    product.Price = reader.GetDecimal(5);
                     product.IsActive = reader.GetBoolean(6);
                     products.Add(product);
                 }
@@ -63,7 +62,6 @@ namespace SuperMarket.Models.DataAccessLayer
                     product.Barcode = reader.GetString(2);
                     product.CategoryId = reader.GetInt32(3);
                     product.ProducerId = reader.GetInt32(4);
-                    product.Price = reader.GetDecimal(5);
                     product.IsActive = reader.GetBoolean(6);
                 }
             }
@@ -90,7 +88,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@Barcode", product.Barcode);
                 command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
                 command.Parameters.AddWithValue("@ProducerId", product.ProducerId);
-                command.Parameters.AddWithValue("@Price", product.Price);
                 command.Parameters.AddWithValue("@IsActive", product.IsActive);
                 command.ExecuteNonQuery();
             }
@@ -117,7 +114,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@Barcode", product.Barcode);
                 command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
                 command.Parameters.AddWithValue("@ProducerId", product.ProducerId);
-                command.Parameters.AddWithValue("@Price", product.Price);
                 command.Parameters.AddWithValue("@IsActive", product.IsActive);
                 command.ExecuteNonQuery();
             }

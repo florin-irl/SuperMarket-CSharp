@@ -13,7 +13,6 @@ namespace SuperMarket.Models.EntityLayer
         public string Barcode { get; set; }
         public int CategoryId { get; set; }
         public int ProducerId { get; set; }
-        public decimal Price { get; set; }
         public bool IsActive { get; set; }
 
 

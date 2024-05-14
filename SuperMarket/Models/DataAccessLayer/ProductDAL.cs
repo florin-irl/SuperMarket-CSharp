@@ -29,8 +29,9 @@ namespace SuperMarket.Models.DataAccessLayer
                     product.Barcode = reader.GetString(2);
                     product.CategoryId = reader.GetInt32(3);
                     product.ProducerId = reader.GetInt32(4);
-                    product.IsActive = reader.GetBoolean(6);
+                    product.IsActive = reader.GetBoolean(5);
                     products.Add(product);
+                    Console.WriteLine(product.Name);
                 }
             }
             catch

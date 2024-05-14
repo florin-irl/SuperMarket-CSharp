@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SuperMarket"
         xmlns:viewModels="clr-namespace:SuperMarket.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="675" Width="1200">
+        Title="HyperMarket Soft" Height="675" Width="1200"
+        WindowState="Maximized"
+        >
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>

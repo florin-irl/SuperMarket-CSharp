@@ -80,14 +80,16 @@ Background="Black"
                             <DataGrid x:Name="dgStocks"
           AutoGenerateColumns="False"
           CanUserAddRows="False"
-                                      Height="250">
+                                      Height="250"
+                                       IsReadOnly="True"
+                                      ItemsSource="{Binding Stocks}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ProductId" Width="75"/>
-                                    <DataGridTextColumn Header="Quantity" Width="75"/>
-                                    <DataGridTextColumn Header="Unit" Width="75"/>
-                                    <DataGridTextColumn Header="Supply Date" Width="125"/>
-                                    <DataGridTextColumn Header="Expiration Date" Width="125"/>
-                                    <DataGridTextColumn Header="Aquistion Cost" Width="*"/>
+                                    <DataGridTextColumn Header="ProductId" Width="75" Binding="{Binding ProductId}"/>
+                                    <DataGridTextColumn Header="Quantity" Width="75" Binding="{Binding Quantity}"/>
+                                    <DataGridTextColumn Header="Unit" Width="75" Binding="{Binding Unit}"/>
+                                    <DataGridTextColumn Header="Supply Date" Width="125" Binding="{Binding SupplyDate}"/>
+                                    <DataGridTextColumn Header="Expiration Date" Width="125" Binding="{Binding ExpirationDate}"/>
+                                    <DataGridTextColumn Header="Aquistion Cost" Width="*" Binding="{Binding AquisitionCost}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <StackPanel Orientation="Horizontal"
@@ -120,11 +122,13 @@ Background="Black"
                         <StackPanel>
                             <DataGrid x:Name="dgProducers"
                                   AutoGenerateColumns="False"
+                                       IsReadOnly="True"
                                   CanUserAddRows="False"
-                                  Height="250">
+                                  Height="250"
+                                      ItemsSource="{Binding Producers}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Width="500"/>
-                                    <DataGridTextColumn Header="Country" Width="*"/>
+                                    <DataGridTextColumn Header="Name" Width="500" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Country" Width="*" Binding="{Binding Country}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <StackPanel Orientation="Horizontal"
@@ -158,9 +162,12 @@ Background="Black"
                         <DataGrid x:Name="dgCategories"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False"
-                                  Height="250">
+                                   IsReadOnly="True"
+                                  Height="250"
+                                  ItemsSource="{Binding Categories}"
+                                  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Width="*"/>
+                                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                             <StackPanel Orientation="Horizontal"
@@ -194,14 +201,16 @@ Background="Black"
                         <DataGrid x:Name="dgProducts"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False"
-                                  Height="250">
+                                   IsReadOnly="True"
+                                  Height="250"
+                                  ItemsSource="{Binding Products}"
+                                  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Width="100"/>
-                                <DataGridTextColumn Header="Barcode" Width="300"/>
-                                <DataGridTextColumn Header="Category" Width="200"/>
-                                <DataGridTextColumn Header="Producer" Width="200"/>
-                                <DataGridTextColumn Header="Price" Width="*"/>
-                            </DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Barcode" Width="300" Binding="{Binding Barcode}"/>
+                                <DataGridTextColumn Header="Category" Width="200" Binding="{Binding CategoryId}"/>
+                                <DataGridTextColumn Header="Producer" Width="200" Binding="{Binding ProducerId}"/>
+                                </DataGrid.Columns>
                         </DataGrid>
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center">
@@ -234,11 +243,14 @@ Background="Black"
                             <DataGrid x:Name="dgReceipts"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False"
-                                  Height="250">
+                                       IsReadOnly="True"
+                                  Height="250"
+                                      ItemsSource="{Binding Receipts}"
+                                      >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Issue Date" Width="200"/>
-                                    <DataGridTextColumn Header="User" Width="200"/>
-                                    <DataGridTextColumn Header="Total Price" Width="*"/>
+                                    <DataGridTextColumn Header="Issue Date" Width="200" Binding="{Binding IssueDate}"/>
+                                    <DataGridTextColumn Header="User" Width="200" Binding="{Binding User}"/>
+                                    <DataGridTextColumn Header="Total Price" Width="*" Binding="{Binding TotalPrice}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -268,57 +280,20 @@ Background="Black"
                             </StackPanel>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="ProductReceipts" FontSize="15">
-                        <StackPanel>
-                            <DataGrid x:Name="dgProductReceipts"
-                                  AutoGenerateColumns="False"
-                                  CanUserAddRows="False"
-                                  Height="250">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ReceiptId" Width="100"/>
-                                    <DataGridTextColumn Header="ProductId" Width="100"/>
-                                    <DataGridTextColumn Header="Quantity" Width="100"/>
-                                    <DataGridTextColumn Header="Price" Width="*"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                            <StackPanel Orientation="Horizontal"
-                                        HorizontalAlignment="Center">
-                                <Button x:Name="AddProductReceiptBtn"
-                                    Content="Add PR"
-                                    Foreground="White"
-Background="Black"
-    Margin="0,25"
-    Height="35"
-    Width="250"/>
-                                <Button x:Name="ModifyProductReceiptBtn"
-                                        Content="Modify PR"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"/>
-                                <Button x:Name="DeleteProductReceiptBtn"
-                                        Content="Delete PR"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </TabItem>
                     <TabItem Header="Offers" FontSize="15">
                         <StackPanel>
                         <DataGrid x:Name="dgOffers"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False"
-                                  Height="250">
+                                   IsReadOnly="True"
+                                  Height="250"
+                                  ItemsSource="{Binding Offers}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Product" Width="100"/>
-                                <DataGridTextColumn Header="Discount" Width="100"/>
-                                <DataGridTextColumn Header="Start Date" Width="250"/>
-                                <DataGridTextColumn Header="End Date" Width="250"/>
-                                <DataGridTextColumn Header="Reason" Width="*"/>
+                                <DataGridTextColumn Header="Product" Width="100" Binding="{Binding Product}"/>
+                                <DataGridTextColumn Header="Discount" Width="100" Binding="{Binding DiscountPercentage}"/>
+                                <DataGridTextColumn Header="Start Date" Width="250" Binding="{Binding StartDate}"/>
+                                <DataGridTextColumn Header="End Date" Width="250" Binding="{Binding EndDate}"/>
+                                <DataGridTextColumn Header="Reason" Width="*" Binding="{Binding Reason}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                             <StackPanel Orientation="Horizontal"

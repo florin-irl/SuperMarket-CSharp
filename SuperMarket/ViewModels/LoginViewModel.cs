@@ -28,7 +28,6 @@ namespace SuperMarket.ViewModels
 
         public void Login(object parameter)
         {
-            Console.WriteLine("Login button clicked");
             if (Username == ""|| Password == "")
             {
                 return;

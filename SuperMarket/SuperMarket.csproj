@@ -101,6 +101,10 @@
     <Compile Include="Models\BusinessLogicLayer\ReceiptBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\StockBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\UserBLL.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\EditPages\EditCategoryPage.xaml.cs">
       <DependentUpon>EditCategoryPage.xaml</DependentUpon>
     </Compile>
@@ -127,6 +131,9 @@
     </Compile>
     <Compile Include="Views\MainAdminPage.xaml.cs">
       <DependentUpon>MainAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainCashierPage.xaml.cs">
+      <DependentUpon>MainCashierPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MainCashierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DataAccessLayer\CategoryDAL.cs" />
@@ -221,9 +232,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

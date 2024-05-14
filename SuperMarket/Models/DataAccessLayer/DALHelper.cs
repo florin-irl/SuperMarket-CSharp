@@ -17,7 +17,6 @@ namespace SuperMarket.Models.DataAccessLayer
             get
             {
                 SqlConnection connection = new SqlConnection(_connectionString);
-                connection.Open();
                 return connection;
             }
         }

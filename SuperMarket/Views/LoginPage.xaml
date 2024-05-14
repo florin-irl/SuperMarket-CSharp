@@ -5,8 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperMarket.Views"
       mc:Ignorable="d" 
+      xmlns:viewModels="clr-namespace:SuperMarket.ViewModels"
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="LoginPage">
+    <Page.DataContext>
+        <viewModels:LoginViewModel/>
+    </Page.DataContext>
     <Grid Background="White">
     <Border Width="300"
             Height="400"
@@ -63,7 +67,8 @@
                     Background="Black"
                         Margin="0,25"
                         Height="35"
-                        Width="250"/>
+                        Width="250"
+                        Command="{Binding LoginCom}"/>
 
             </StackPanel>
         

@@ -143,5 +143,73 @@ namespace SuperMarket.Models.DataAccessLayer
                 connection.Close();
             }
         }
+
+        public ObservableCollection<User> GetCashiers()
+        {
+            SqlConnection connection = DALHelper.Connection;
+            ObservableCollection<User> cashiers = new ObservableCollection<User>();
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("spSelectAllCashiers", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User cashier = new User();
+                    cashier.UserId = reader.GetInt32(0);
+                    cashier.IsAdmin = reader.GetBoolean(1);
+                    cashier.Username = reader.GetString(2);
+                    cashier.Password = reader.GetString(3);
+                    cashier.IsActive = reader.GetBoolean(4);
+                    cashiers.Add(cashier);
+                }
+                connection.Close();
+                return cashiers;
+            }
+            catch
+            {
+                Console.WriteLine("An error occurred while getting cashiers from the database.");
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public ObservableCollection<User> GetAdmins()
+        {
+            SqlConnection connection = DALHelper.Connection;
+            ObservableCollection<User> admins = new ObservableCollection<User>();
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("spSelectAllAdmins", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User admin = new User();
+                    admin.UserId = reader.GetInt32(0);
+                    admin.IsAdmin = reader.GetBoolean(1);
+                    admin.Username = reader.GetString(2);
+                    admin.Password = reader.GetString(3);
+                    admin.IsActive = reader.GetBoolean(4);
+                    admins.Add(admin);
+                }
+                connection.Close();
+                return admins;
+            }
+            catch
+            {
+                Console.WriteLine("An error occurred while getting admins from the database.");
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

@@ -26,27 +26,6 @@ namespace SuperMarket.ViewModels
         {
             var loginPage = new LoginPage();
             CurrentPage = loginPage;
-            //if(loginPage.DataContext is not LoginViewModel loginVm)
-            //{
-            //    Application.Current.Shutdown();
-            //}
-            //else
-            //{
-            //    var username = loginVm.Username;
-            //    var password = loginVm.Password;
-            //    var userBLL = new UserBLL();
-            //    if(userBLL.IsAdmin(username,password))
-            //    {
-            //        var adminPage = new MainAdminPage();
-            //        CurrentPage = adminPage;
-            //    }
-            //    else
-            //        if(userBLL.IsUser(username,password))
-            //    {
-            //        var userPage = new MainCashierPage();
-            //        CurrentPage = userPage;
-            //    }
-            //}
         }
 
     }

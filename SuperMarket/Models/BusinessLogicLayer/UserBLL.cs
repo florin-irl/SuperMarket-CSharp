@@ -38,5 +38,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
             }
             return false;
         }
+
+        public ObservableCollection<User> GetAllUsers()
+        {
+            return _userDAL.GetAllUsers();
+        }
     }
 }

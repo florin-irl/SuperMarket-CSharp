@@ -66,7 +66,10 @@ Background="Black"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding ModifyUserCommand}">
+                                    
+                                </Button>
                                 <Button x:Name="DeleteUserBtn"
                                         Content="Delete user"
                                     Foreground="White"

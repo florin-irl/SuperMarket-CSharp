@@ -1,6 +1,7 @@
 ﻿using SuperMarket.Models.BusinessLogicLayer;
 using SuperMarket.Models.EntityLayer;
 using SuperMarket.ViewModels.Commands;
+using SuperMarket.Views;
 using SuperMarket.Views.EditPages;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace SuperMarket.ViewModels
 
 
         public ICommand DeleteUserCommand { get; set; }
+        public ICommand AddNewUserCommand { get; set; }
         public object? SelectedItem { get; set; }
         public MainAdminPageViewModel()
         {
@@ -51,6 +53,7 @@ namespace SuperMarket.ViewModels
             Offers = _offerBLL.GetAllOffers();
 
             DeleteUserCommand = new RelayCommand<object>(DeleteUser);
+            AddNewUserCommand = new RelayCommand<object>(AddUser);
         }
 
         private void DeleteUser(object? obj)
@@ -64,6 +67,16 @@ namespace SuperMarket.ViewModels
                 _userBLL.DeleteUser(user);
                 Users.Remove(user);
             }
+        }
+
+        private void AddUser(object? obj)
+        {
+            if(obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var EditUserPage = new EditUserPage();
+            currentPage.NavigationService?.Navigate(EditUserPage);
         }
 
 

@@ -136,7 +136,9 @@ Background="Black"
                                        IsReadOnly="True"
                                   CanUserAddRows="False"
                                   Height="250"
+                                      SelectedItem="{Binding SelectedItem}"
                                       ItemsSource="{Binding Producers}">
+                                
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Width="500" Binding="{Binding Name}"/>
                                     <DataGridTextColumn Header="Country" Width="*" Binding="{Binding Country}"/>
@@ -150,7 +152,9 @@ Background="Black"
 Background="Black"
     Margin="0,25"
     Height="35"
-    Width="250"/>
+    Width="250"
+                                         Command="{Binding AddNewProducerCommand}"
+         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
                                 <Button x:Name="ModifyProducerBtn"
                                         Content="Modify producer"
                                     Foreground="White"
@@ -164,7 +168,10 @@ Background="Black"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding DeleteProducerCommand}"
+                                        CommandParameter="{Binding SelectedItem}"
+                                        />
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

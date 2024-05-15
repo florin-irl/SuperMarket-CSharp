@@ -40,6 +40,9 @@ namespace SuperMarket.ViewModels
 
         public ICommand DeleteUserCommand { get; set; }
         public ICommand AddNewUserCommand { get; set; }
+
+        public ICommand DeleteProducerCommand { get; set; }
+        public ICommand AddNewProducerCommand { get; set; }
         public object? SelectedItem { get; set; }
         public MainAdminPageViewModel()
         {
@@ -54,6 +57,9 @@ namespace SuperMarket.ViewModels
 
             DeleteUserCommand = new RelayCommand<object>(DeleteUser);
             AddNewUserCommand = new RelayCommand<object>(AddUser);
+
+            DeleteProducerCommand = new RelayCommand<object>(DeleteProducer);
+            AddNewProducerCommand = new RelayCommand<object>(AddProducer);
         }
 
         private void DeleteUser(object? obj)
@@ -77,6 +83,29 @@ namespace SuperMarket.ViewModels
             }
             var EditUserPage = new EditUserPage();
             currentPage.NavigationService?.Navigate(EditUserPage);
+        }
+
+        private void DeleteProducer(object? obj)
+        {
+            // Display confirmation dialog
+            var result = MessageBox.Show("Are you sure you want to delete this producer?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            // Proceed with deletion if the user confirms
+            if (result == MessageBoxResult.Yes && SelectedItem is Producer producer)
+            {
+                _producerBLL.DeleteProducer(producer);
+                Producers.Remove(producer);
+            }
+        }
+
+        private void AddProducer(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var editProducerPage = new Views.EditPages.EditProducersPage();
+            currentPage.NavigationService?.Navigate(editProducerPage);
         }
 
 

@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:SuperMarket.ViewModels"
       xmlns:local="clr-namespace:SuperMarket.Views.EditPages"
       mc:Ignorable="d" 
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="EditProducersPage">
+    <Page.DataContext>
+        <vm:EditProducersPageViewModel/>
+    </Page.DataContext>
 
     <Grid Background="White">
         <Border Width="300"
@@ -46,7 +50,7 @@
          Width="255"
          BorderThickness="0,0,0,1"
          HorizontalAlignment="Left"
-         Text=""/>
+         Text="{Binding Name}"/>
                     <TextBlock Text="Country"
                                Grid.Row="2"
                                Margin="0,15"
@@ -58,7 +62,7 @@
                              Width="255"
                              BorderThickness="0,0,0,1"
                              HorizontalAlignment="Left"
-                             Text=""/>
+                             Text="{Binding Country}"/>
                 </Grid>
                 <Button x:Name="SaveBtn"
 Content="Save"
@@ -66,7 +70,10 @@ Foreground="White"
 Background="Black"
     Margin="0,25"
     Height="35"
-    Width="250"/>
+    Width="250"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                        Command="{Binding SaveCommand}"
+                        />
             </StackPanel>
         </Border>
     </Grid>

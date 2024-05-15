@@ -82,7 +82,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@Name", producer.Name);
                 sqlCommand.Parameters.AddWithValue("@Country", producer.Country);
-                sqlCommand.Parameters.AddWithValue("@IsActive", producer.IsActive);
                 sqlCommand.ExecuteNonQuery();
             }
             catch
@@ -125,7 +124,7 @@ namespace SuperMarket.Models.DataAccessLayer
             try
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("spProducersDelete", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("spProducersSoftDelete", sqlConnection);
                 sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@ProducerId", producer.ProducerId);
                 sqlCommand.ExecuteNonQuery();

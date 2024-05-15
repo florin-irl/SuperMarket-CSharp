@@ -17,5 +17,15 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             return _producerDAL.GetAllProducers();
         }
+
+        public void DeleteProducer(Producer producer)
+        {
+            _producerDAL.DeleteProducer(producer);
+        }
+
+        public void AddProducer(Producer producer)
+        {
+            _producerDAL.AddProducer(producer);
+        }
     }
 }

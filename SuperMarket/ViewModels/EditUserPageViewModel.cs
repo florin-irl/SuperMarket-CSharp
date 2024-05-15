@@ -19,11 +19,14 @@ namespace SuperMarket.ViewModels
         public string Username { get; set; }
         public string Password { get; set; }
 
+        public bool Add;
+
         private UserBLL _userBLL = new UserBLL();
 
         public EditUserPageViewModel()
         {
             AddNewUserCommand = new RelayCommand<object>(SaveNewUser);
+            Add = true;
         }
 
         public void SaveNewUser(object? obj)
@@ -32,19 +35,27 @@ namespace SuperMarket.ViewModels
             {
                 return;
             }
-            if (Username == "" || Password == "")
+            if (Add == false)
             {
                 return;
             }
+            else
+            {
+                if (Username == "" || Password == "")
+                {
+                    return;
+                }
 
-            User user = new User();
-            user.IsAdmin = IsAdmin;
-            user.Username = Username;
-            user.Password = Password;
-            _userBLL.AddUser(user);
+                User user = new User();
+                user.IsAdmin = IsAdmin;
+                user.Username = Username;
+                user.Password = Password;
+                _userBLL.AddUser(user);
 
-            var mainAdminPage = new MainAdminPage();
-            editUserPage.NavigationService.Navigate(mainAdminPage);
+                var mainAdminPage = new MainAdminPage();
+                editUserPage.NavigationService.Navigate(mainAdminPage);
+            }
+           
         }
 
     }

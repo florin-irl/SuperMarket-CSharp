@@ -129,7 +129,7 @@ namespace SuperMarket.Models.DataAccessLayer
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("spUsersDelete", connection);
+                SqlCommand command = new SqlCommand("spUsersSoftDelete", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@UserId", user.UserId);
                 command.ExecuteNonQuery();

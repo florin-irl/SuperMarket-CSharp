@@ -43,5 +43,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             return _userDAL.GetAllUsers();
         }
+
+        public void DeleteUser(User user)
+        {
+            _userDAL.DeleteUser(user);
+        }
     }
 }

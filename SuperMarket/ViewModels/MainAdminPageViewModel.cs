@@ -1,5 +1,6 @@
 ﻿using SuperMarket.Models.BusinessLogicLayer;
 using SuperMarket.Models.EntityLayer;
+using SuperMarket.ViewModels.Commands;
 using SuperMarket.Views.EditPages;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace SuperMarket.ViewModels
 {
@@ -32,6 +35,10 @@ namespace SuperMarket.ViewModels
         private ReceiptBLL _receiptBLL { get; set; } = new ReceiptBLL();
         private ProductReceiptBLL _productReceiptBLL { get; set; } = new ProductReceiptBLL();
         private OfferBLL _offerBLL { get; set; } = new OfferBLL();
+
+
+        public ICommand DeleteUserCommand { get; set; }
+        public object? SelectedItem { get; set; }
         public MainAdminPageViewModel()
         {
             Users = _userBLL.GetAllUsers();
@@ -42,7 +49,23 @@ namespace SuperMarket.ViewModels
             Receipts = _receiptBLL.GetAllReceipts();
             ProductsReceipt = _productReceiptBLL.GetAllProductReceipts();
             Offers = _offerBLL.GetAllOffers();
+
+            DeleteUserCommand = new RelayCommand<object>(DeleteUser);
         }
+
+        private void DeleteUser(object? obj)
+        {
+            // Display confirmation dialog
+            var result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            // Proceed with deletion if the user confirms
+            if (result == MessageBoxResult.Yes && SelectedItem is User user)
+            {
+                _userBLL.DeleteUser(user);
+                Users.Remove(user);
+            }
+        }
+
 
 
 

@@ -85,7 +85,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
                 command.Parameters.AddWithValue("@Username", user.Username);
                 command.Parameters.AddWithValue("@Password", user.Password);
-                command.Parameters.AddWithValue("@IsActive", user.IsActive);
                 command.ExecuteNonQuery();
             }
             catch

@@ -103,6 +103,7 @@
     <Compile Include="Models\BusinessLogicLayer\UserBLL.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\EditUserPageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainAdminPageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

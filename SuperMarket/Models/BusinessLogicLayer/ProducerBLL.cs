@@ -27,5 +27,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             _producerDAL.AddProducer(producer);
         }
+
+        public void UpdateProducer(Producer producer)
+        {
+            _producerDAL.ModifyProducer(producer);
+        }
     }
 }

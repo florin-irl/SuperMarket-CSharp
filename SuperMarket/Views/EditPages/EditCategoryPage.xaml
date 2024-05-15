@@ -4,9 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperMarket.Views.EditPages"
+      xmlns:vm="clr-namespace:SuperMarket.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="EditCategoryPage">
+    <Page.DataContext>
+        <vm:EditCategoryPageViewModel/>
+    </Page.DataContext>
 
     <Grid Background="White">
         <Border Width="300"
@@ -32,19 +36,33 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <TextBlock Text="Id"
+                               Grid.Row="0"
+                               Margin="0,15"
+                               HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtCategoryId"
+                             Grid.Column="1"
+                             Grid.Row="0"
+                             Padding="0,5"
+                             IsEnabled="False"
+                             Width="50"
+                             BorderThickness="0,0,0,1"
+                             HorizontalAlignment="Right"
+                             Text="{Binding Id}"/>
                     <TextBlock Text="Name"
-               Grid.Row="0"
+               Grid.Row="1"
                Margin="0,15"
                HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtCategoryName"
              Grid.Column="1"
-             Grid.Row="1"
+             Grid.Row="2"
              Padding="0,5"
              Width="255"
              BorderThickness="0,0,0,1"
              HorizontalAlignment="Left"
-             Text=""/>
+             Text="{Binding Name}"/>
                 </Grid>
                 <Button x:Name="SaveBtn"
     Content="Save"
@@ -52,7 +70,11 @@
     Background="Black"
         Margin="0,25"
         Height="35"
-        Width="250"/>
+        Width="250"
+                        
+Command="{Binding SaveCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                        />
             </StackPanel>
         </Border>
     </Grid>

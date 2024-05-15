@@ -12,13 +12,16 @@ using System.Windows.Input;
 
 namespace SuperMarket.ViewModels
 {
-    public class EditProducersPageViewModel : BaseViewModel
+    public class EditCategoryPageViewModel : BaseViewModel
     {
         private string _name;
-        private string _country;
         private int? _id;
-        public ICommand SaveCommand { get; set; }
 
+        public bool Add;
+
+        private CategoryBLL _categoryBLL = new CategoryBLL();
+
+        public ICommand SaveCommand { get; set; }
         public string Name
         {
             get => _name;
@@ -28,16 +31,6 @@ namespace SuperMarket.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
-        public string Country
-        {
-            get => _country;
-            set
-            {
-                _country = value;
-                OnPropertyChanged(nameof(Country));
-            }
-        }
-
         public int? Id
         {
             get => _id;
@@ -48,64 +41,54 @@ namespace SuperMarket.ViewModels
             }
         }
 
-        public bool Add;
-
-        private ProducerBLL _producerBLL = new ProducerBLL();
-
-        public EditProducersPageViewModel()
+        public EditCategoryPageViewModel()
         {
-            SaveCommand = new RelayCommand<object>(SaveProducer);
+            SaveCommand = new RelayCommand<object>(SaveCategory);
             Add = true;
         }
 
-        public EditProducersPageViewModel(Producer producer)
+        public EditCategoryPageViewModel(Category category)
         {
-            SaveCommand = new RelayCommand<object>(SaveProducer);
+            SaveCommand = new RelayCommand<object>(SaveCategory);
             Add = false;
-            Name = producer.Name;
-            Country = producer.Country;
-            Id = producer.ProducerId;
+            Id = category.CategoryId;
+            Name = category.Name;
         }
 
-        public void SaveProducer(object? obj)
+        private void SaveCategory(object obj)
         {
-            if (obj is not EditProducersPage editProducersPage)
+            if (obj is not EditCategoryPage editProducersPage)
             {
                 return;
             }
-            if (Add == false)
+            if(Add==false)
             {
-                if (Name == "" || Country == "")
+                if(Name =="")
                 {
                     return;
                 }
 
-                Producer producer = new Producer();
-                producer.ProducerId = Id;
-                producer.Name = Name;
-                producer.Country = Country;
-                _producerBLL.UpdateProducer(producer);
+                Category category = new Category();
+                category.CategoryId = Id;
+                category.Name = Name;
+                _categoryBLL.UpdateCategory(category);
 
                 var mainAdminPage = new MainAdminPage();
                 editProducersPage.NavigationService.Navigate(mainAdminPage);
             }
             else
             {
-                if (Name == "" || Country == "")
+                if(Name=="")
                 {
                     return;
                 }
-
-                Producer producer = new Producer();
-                producer.Name = Name;
-                producer.Country = Country;
-                _producerBLL.AddProducer(producer);
+                Category category = new Category();
+                category.Name = Name;
+                _categoryBLL.AddCategory(category);
 
                 var mainAdminPage = new MainAdminPage();
                 editProducersPage.NavigationService.Navigate(mainAdminPage);
             }
-
         }
-
     }
 }

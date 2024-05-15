@@ -105,6 +105,7 @@
     <Compile Include="Models\UserPageParametersConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\EditCategoryPageViewModel.cs" />
     <Compile Include="ViewModels\EditProducersPageViewModel.cs" />
     <Compile Include="ViewModels\EditUserPageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

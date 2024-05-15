@@ -47,7 +47,14 @@ namespace SuperMarket.ViewModels
         public ICommand AddNewUserCommand { get; set; }
 
         public ICommand DeleteProducerCommand { get; set; }
+
+        public ICommand ModifyProducerCommand { get; set; }
         public ICommand AddNewProducerCommand { get; set; }
+
+        public ICommand DeleteCategoryCommand { get; set; }
+        public ICommand ModifyCategoryCommand { get; set; }
+        public ICommand AddNewCategoryCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -74,7 +81,12 @@ namespace SuperMarket.ViewModels
             AddNewUserCommand = new RelayCommand<object>(AddUser);
 
             DeleteProducerCommand = new RelayCommand<object>(DeleteProducer);
+            ModifyProducerCommand = new RelayCommand<object>(ModifyProducer);
             AddNewProducerCommand = new RelayCommand<object>(AddProducer);
+
+            DeleteCategoryCommand = new RelayCommand<object>(DeleteCategory);
+            ModifyCategoryCommand = new RelayCommand<object>(ModifyCategory);
+            AddNewCategoryCommand = new RelayCommand<object>(AddCategory);
         }
 
         private void DeleteUser(object? obj)
@@ -88,6 +100,23 @@ namespace SuperMarket.ViewModels
                 _userBLL.DeleteUser(user);
                 Users.Remove(user);
             }
+        }
+
+        private void ModifyUser(object? obj)
+        {
+            Console.WriteLine("ModifyUser");
+            if (obj is not object[] values) return;
+            Console.WriteLine("ModifyUser2");
+            Console.WriteLine(values[0]);
+            if (values[0] is not User user || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            Console.WriteLine("ModifyUser3");
+
+            var userEditPage = new EditUserPage(user);
+
+            currentPage.NavigationService?.Navigate(userEditPage);
         }
 
         private void AddUser(object? obj)
@@ -123,22 +152,57 @@ namespace SuperMarket.ViewModels
             currentPage.NavigationService?.Navigate(editProducerPage);
         }
 
-        private void ModifyUser(object? obj)
+        private void ModifyProducer(object? obj)
         {
-            Console.WriteLine("ModifyUser");
             if (obj is not object[] values) return;
-            Console.WriteLine("ModifyUser2");
-            Console.WriteLine(values[0]);
-            if (values[0] is not User user || values[1] is not MainAdminPage currentPage)
+            if (values[0] is not Producer producer || values[1] is not MainAdminPage currentPage)
             {
                 return;
             }
-            Console.WriteLine("ModifyUser3");
 
-            var userEditPage = new EditUserPage(user);
+            var producerEditPage = new EditProducersPage(producer);
 
-            currentPage.NavigationService?.Navigate(userEditPage);
+            currentPage.NavigationService?.Navigate(producerEditPage);
         }
+
+        private void AddCategory(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var editCategoryPage = new Views.EditPages.EditCategoryPage();
+            currentPage.NavigationService?.Navigate(editCategoryPage);
+        }
+
+        private void ModifyCategory(object? obj)
+        {
+            if (obj is not object[] values) return;
+            if (values[0] is not Category category || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+
+            var categoryEditPage = new EditCategoryPage(category);
+
+            currentPage.NavigationService?.Navigate(categoryEditPage);
+        }
+
+        private void DeleteCategory(object? obj)
+        {
+            // Display confirmation dialog
+            var result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            // Proceed with deletion if the user confirms
+            if (result == MessageBoxResult.Yes && SelectedItem is Category category)
+            {
+                Console.WriteLine("DeleteCategory");
+                _categoryBLL.DeleteCategory(category);
+                Categories.Remove(category);
+            }
+        }
+
+      
 
 
 

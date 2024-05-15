@@ -105,7 +105,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 sqlCommand.Parameters.AddWithValue("@ProducerId", producer.ProducerId);
                 sqlCommand.Parameters.AddWithValue("@Name", producer.Name);
                 sqlCommand.Parameters.AddWithValue("@Country", producer.Country);
-                sqlCommand.Parameters.AddWithValue("@IsActive", producer.IsActive);
                 sqlCommand.ExecuteNonQuery();
             }
             catch

@@ -19,5 +19,20 @@ namespace SuperMarket.Models.BusinessLogicLayer
             return _categoryDAL.GetAllCategories();
         }
 
+        public void UpdateCategory(Category category)
+        {
+            _categoryDAL.ModifyCategory(category);
+        }
+
+        public void DeleteCategory(Category category)
+        {
+            _categoryDAL.DeleteCategory(category);
+        }
+
+        public void AddCategory(Category category)
+        {
+            _categoryDAL.AddCategory(category);
+        }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using SuperMarket.Models.BusinessLogicLayer;
+﻿using SuperMarket.Models;
+using SuperMarket.Models.BusinessLogicLayer;
+using SuperMarket.Models.DataAccessLayer;
 using SuperMarket.Models.EntityLayer;
 using SuperMarket.ViewModels.Commands;
 using SuperMarket.Views;
@@ -11,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Xml;
 
 namespace SuperMarket.ViewModels
 {
@@ -39,11 +42,22 @@ namespace SuperMarket.ViewModels
 
 
         public ICommand DeleteUserCommand { get; set; }
+
+        public ICommand ModifyUserCommand { get; set; }
         public ICommand AddNewUserCommand { get; set; }
 
         public ICommand DeleteProducerCommand { get; set; }
         public ICommand AddNewProducerCommand { get; set; }
-        public object? SelectedItem { get; set; }
+        private object _selectedItem;
+        public object SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
         public MainAdminPageViewModel()
         {
             Users = _userBLL.GetAllUsers();
@@ -56,6 +70,7 @@ namespace SuperMarket.ViewModels
             Offers = _offerBLL.GetAllOffers();
 
             DeleteUserCommand = new RelayCommand<object>(DeleteUser);
+            ModifyUserCommand = new RelayCommand<object>(ModifyUser);
             AddNewUserCommand = new RelayCommand<object>(AddUser);
 
             DeleteProducerCommand = new RelayCommand<object>(DeleteProducer);
@@ -106,6 +121,23 @@ namespace SuperMarket.ViewModels
             }
             var editProducerPage = new Views.EditPages.EditProducersPage();
             currentPage.NavigationService?.Navigate(editProducerPage);
+        }
+
+        private void ModifyUser(object? obj)
+        {
+            Console.WriteLine("ModifyUser");
+            if (obj is not object[] values) return;
+            Console.WriteLine("ModifyUser2");
+            Console.WriteLine(values[0]);
+            if (values[0] is not User user || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            Console.WriteLine("ModifyUser3");
+
+            var userEditPage = new EditUserPage(user);
+
+            currentPage.NavigationService?.Navigate(userEditPage);
         }
 
 

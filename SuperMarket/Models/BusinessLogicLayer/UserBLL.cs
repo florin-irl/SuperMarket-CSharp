@@ -53,5 +53,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             _userDAL.AddUser(user);
         }
+
+        public void UpdateUser(User user)
+        {
+            _userDAL.ModifyUser(user);
+        }
     }
 }

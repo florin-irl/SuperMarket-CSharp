@@ -5,9 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperMarket.Views"
       xmlns:vm="clr-namespace:SuperMarket.ViewModels"
+      xmlns:res="clr-namespace:SuperMarket.Models"
       mc:Ignorable="d" 
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="MainAdminPage">
+    <Page.Resources>
+        <res:UserPageParametersConverter x:Key="UserPageParametersConverter"/>
+    </Page.Resources>
     <Page.DataContext>
         <vm:MainAdminPageViewModel/>
     </Page.DataContext>
@@ -61,15 +65,21 @@ Background="Black"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
 
                                 <Button x:Name="ModifyUserBtn"
-                                        Content="Modify user"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"
-                                        Command="{Binding ModifyUserCommand}">
-                                    
+        Content="Modify user"
+        Foreground="White"
+        Background="Black"
+        Margin="0,25"
+        Height="35"
+        Width="250"
+        Command="{Binding ModifyUserCommand}">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource UserPageParametersConverter}">
+                                            <Binding Path="DataContext.SelectedItem" RelativeSource="{RelativeSource AncestorType={x:Type Page}}" />
+                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
                                 </Button>
+
                                 <Button x:Name="DeleteUserBtn"
                                         Content="Delete user"
                                     Foreground="White"

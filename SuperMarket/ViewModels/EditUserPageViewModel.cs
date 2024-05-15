@@ -14,10 +14,50 @@ namespace SuperMarket.ViewModels
 {
     public class EditUserPageViewModel : BaseViewModel
     {
+        private bool _isAdmin;
+        private string _username;
+        private string _password;
+        private int _userId;
+
         public ICommand AddNewUserCommand { get; set; }
-        public bool IsAdmin { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged(nameof(IsAdmin));
+            }
+        }
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
+            }
+
+        }
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public int? Id
+        {
+            get => _userId;
+            set
+            {
+                _userId = value ?? 0;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
 
         public bool Add;
 
@@ -29,6 +69,16 @@ namespace SuperMarket.ViewModels
             Add = true;
         }
 
+        public EditUserPageViewModel(User user)
+        {
+            AddNewUserCommand = new RelayCommand<object>(SaveNewUser);
+            IsAdmin = user.IsAdmin;
+            Username = user.Username;
+            Password = user.Password;
+            Id = user.UserId;
+            Add = false;
+        }
+
         public void SaveNewUser(object? obj)
         {
             if(obj is not EditUserPage editUserPage)
@@ -37,7 +87,15 @@ namespace SuperMarket.ViewModels
             }
             if (Add == false)
             {
-                return;
+                User user = new User();
+                user.IsAdmin = IsAdmin;
+                user.Username = Username;
+                user.Password = Password;
+                user.UserId = Id ?? 0;
+                _userBLL.UpdateUser(user);
+
+                var mainAdminPage = new MainAdminPage();
+                editUserPage.NavigationService.Navigate(mainAdminPage);
             }
             else
             {

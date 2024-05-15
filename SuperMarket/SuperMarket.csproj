@@ -101,6 +101,8 @@
     <Compile Include="Models\BusinessLogicLayer\ReceiptBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\StockBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\UserBLL.cs" />
+    <Compile Include="Models\UserPageParameters.cs" />
+    <Compile Include="Models\UserPageParametersConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\EditProducersPageViewModel.cs" />

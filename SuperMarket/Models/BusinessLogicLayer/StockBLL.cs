@@ -17,5 +17,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             return _stockDAL.GetAllStocks();
         }
+
+        public void AddStock(Stock stock)
+        {
+            _stockDAL.AddStock(stock);
+        }
     }
 }

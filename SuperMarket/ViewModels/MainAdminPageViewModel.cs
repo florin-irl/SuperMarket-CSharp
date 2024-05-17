@@ -55,6 +55,8 @@ namespace SuperMarket.ViewModels
         public ICommand ModifyCategoryCommand { get; set; }
         public ICommand AddNewCategoryCommand { get; set; }
 
+        public ICommand AddNewStockCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -87,6 +89,8 @@ namespace SuperMarket.ViewModels
             DeleteCategoryCommand = new RelayCommand<object>(DeleteCategory);
             ModifyCategoryCommand = new RelayCommand<object>(ModifyCategory);
             AddNewCategoryCommand = new RelayCommand<object>(AddCategory);
+
+            AddNewStockCommand = new RelayCommand<object>(AddStock);
         }
 
         private void DeleteUser(object? obj)
@@ -127,6 +131,16 @@ namespace SuperMarket.ViewModels
             }
             var EditUserPage = new EditUserPage();
             currentPage.NavigationService?.Navigate(EditUserPage);
+        }
+
+        private void AddStock(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var editStockPage = new Views.EditPages.EditStockPage();
+            currentPage.NavigationService?.Navigate(editStockPage);
         }
 
         private void DeleteProducer(object? obj)

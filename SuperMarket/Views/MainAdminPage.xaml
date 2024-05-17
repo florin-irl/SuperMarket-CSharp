@@ -121,14 +121,11 @@ Background="Black"
 Background="Black"
     Margin="0,25"
     Height="35"
-    Width="250"/>
-                                <Button x:Name="DeleteStockBtn"
-                                        Content="Delete stock"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"/>
+    Width="250"
+                                        Command="{Binding AddNewStockCommand}"
+                                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                />
+                                
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

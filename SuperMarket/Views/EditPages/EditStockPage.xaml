@@ -4,12 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperMarket.Views.EditPages"
+      xmlns:vm="clr-namespace:SuperMarket.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="EditStockPage">
+    <Page.DataContext>
+        <vm:EditStockPageViewModel/>
+    </Page.DataContext>
     <Grid Background="White">
         <Border Width="300"
-    Height="600"
+    Height="660"
     Background="White"
     CornerRadius="10">
             <Border.Effect>
@@ -41,86 +45,100 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <TextBlock Text="Quantity"
-           Grid.Row="0"
+           Grid.Row="1"
            Margin="0,15"
            HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtStockQuantity"
          Grid.Column="1"
-         Grid.Row="1"
+         Grid.Row="2"
          Padding="0,5"
          Width="255"
          BorderThickness="0,0,0,1"
          HorizontalAlignment="Left"
-         Text=""/>
+         Text="{Binding Quantity}"/>
                     <TextBlock Text="Unit"
-                               Grid.Row="2"
+                               Grid.Row="3"
                                Margin="0,15"
                                HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtStockUnit"
                              Grid.Column="1"
-                             Grid.Row="3"
+                             Grid.Row="4"
                              Padding="0,5"
                              Width="255"
                              BorderThickness="0,0,0,1"
                              HorizontalAlignment="Left"
-                             Text=""/>
+                             Text="{Binding Unit}"/>
                     <TextBlock Text="Supply Date"
-                               Grid.Row="4"
+                               Grid.Row="5"
                                Margin="0,15"
                                HorizontalAlignment="Left"/>
                     <DatePicker x:Name="dbSupplyDate"
 Grid.Column="1"
-Grid.Row="5"
+Grid.Row="6"
 Padding="0,5"
 Width="255"
 BorderThickness="0,0,0,1"
-HorizontalAlignment="Left"/>
+HorizontalAlignment="Left"
+                                SelectedDate="{Binding SupplyDate}"/>
                     <TextBlock Text="Expiry Date"
-                               Grid.Row="6"
+                               Grid.Row="7"
                                Margin="0,15"
                                HorizontalAlignment="Left"/>
                     <DatePicker x:Name="dbExpiryDate"
                                 Grid.Column="1"
-                                Grid.Row="7"
+                                Grid.Row="8"
                                 Padding="0,5"
                                 Width="255"
                                 BorderThickness="0,0,0,1"
-                                HorizontalAlignment="Left"/>
-                    <TextBlock Text="Product Id"
-                               Grid.Row="8"
+                                HorizontalAlignment="Left"
+                                SelectedDate="{Binding ExpirationDate}"/>
+                    <TextBlock Text="Product"
+                               Grid.Row="9"
                                Margin="0,15"
                                HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txtProductId"
-                             Grid.Column="1"
-                             Grid.Row="9"
-                             Padding="0,5"
-                             Width="255"
-                             BorderThickness="0,0,0,1"
-                             HorizontalAlignment="Left"
-                             Text=""/>
-                    <TextBlock Text="Aquistion Cost"
-                               Grid.Row="10"
-                               Margin="0,15"
-                               HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txtAquistionCost"
-                             Grid.Column="1"
+                    <ComboBox x:Name="cbProduct"
+                              Grid.Column="1"
+                              Grid.Row="10"
+                              Padding="0,5"
+                              Width="255"
+                              BorderThickness="0,0,0,1"
+                              HorizontalAlignment="Left"
+                              ItemsSource="{Binding Products}"
+                              SelectedItem="{Binding ProductName}"
+                              />
+                    <TextBox Text="Aquisition Cost"
                              Grid.Row="11"
+                             Margin="0,15"
+                             HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAquisitionCost"
+                             Grid.Column="1"
+                             Grid.Row="12"
                              Padding="0,5"
                              Width="255"
                              BorderThickness="0,0,0,1"
                              HorizontalAlignment="Left"
-                             Text=""/>
+                             Text="{Binding AquisitionCost}"/>
+                    <Button x:Name="btnSave"
+                            Grid.Row="13"
+                            Margin="0,15"
+                            Width="255"
+                            Height="40"
+                            Content="Save"
+                            Background="Black"
+                            Foreground="White"
+                            Command="{Binding AddNewStockCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                    />
 
                 </Grid>
-                <Button x:Name="SaveBtn"
-Content="Save"
-Foreground="White"
-Background="Black"
-    Margin="0,25"
-    Height="35"
-    Width="250"/>
+               
             </StackPanel>
         </Border>
     </Grid>

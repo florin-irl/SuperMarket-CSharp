@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SuperMarket.ViewModels
@@ -54,14 +55,21 @@ namespace SuperMarket.ViewModels
             Id = category.CategoryId;
             Name = category.Name;
         }
-
+        
         private void SaveCategory(object obj)
         {
             if (obj is not EditCategoryPage editProducersPage)
             {
                 return;
             }
-            if(Add==false)
+            var categories = _categoryBLL.GetAllCategories();
+            var isUnique = !categories.Any(category => category.Name == Name && category.CategoryId != Id);
+            if (isUnique == false)
+            {
+                var warning = MessageBox.Show("Category already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (Add==false)
             {
                 if(Name =="")
                 {

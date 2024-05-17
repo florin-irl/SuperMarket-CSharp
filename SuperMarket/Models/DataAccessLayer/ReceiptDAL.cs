@@ -29,6 +29,7 @@ namespace SuperMarket.Models.DataAccessLayer
                     receipt.UserID = reader.GetInt32(2);
                     receipt.TotalPrice = reader.GetDecimal(3);
                     receipt.IsActive = reader.GetBoolean(4);
+                    receipt.User = new UserDAL().GetUserById(receipt.UserID);
                     receipts.Add(receipt);
                 }
             }

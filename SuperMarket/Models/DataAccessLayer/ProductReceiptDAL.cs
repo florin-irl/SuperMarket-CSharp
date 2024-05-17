@@ -146,5 +146,38 @@ namespace SuperMarket.Models.DataAccessLayer
                 sqlConnection.Close();
             }
         }
+
+        public ObservableCollection<ProductReceipt> GetProductReceiptsByReceiptId(int? receiptId)
+        {
+            ObservableCollection<ProductReceipt> productReceipts = new ObservableCollection<ProductReceipt>();
+            SqlConnection sqlConnection = DALHelper.Connection;
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand("spGetProductReceiptsByReceiptId", sqlConnection);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@ReceiptId", receiptId);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    ProductReceipt productReceipt = new ProductReceipt();
+                    productReceipt.ProductId = sqlDataReader.GetInt32(0);
+                    productReceipt.ReceiptId = sqlDataReader.GetInt32(1);
+                    productReceipt.Quantity = sqlDataReader.GetInt32(2);
+                    productReceipt.Subtotal = sqlDataReader.GetDecimal(3);
+                    productReceipt.IsActive = sqlDataReader.GetBoolean(4);
+                    productReceipts.Add(productReceipt);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("An error occurred while getting product receipts by receipt ID from the database.");
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return productReceipts;
+        }
     }
 }

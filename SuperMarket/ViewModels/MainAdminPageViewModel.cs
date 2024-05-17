@@ -61,6 +61,8 @@ namespace SuperMarket.ViewModels
         public ICommand ModifyProductCommand { get; set; }
         public ICommand DeleteProductCommand { get; set; }
 
+        public ICommand ViewReceiptInfoCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -99,6 +101,8 @@ namespace SuperMarket.ViewModels
             AddNewProductCommand = new RelayCommand<object>(AddProduct);
             ModifyProductCommand = new RelayCommand<object>(ModifyProduct);
             DeleteProductCommand = new RelayCommand<object>(DeleteProduct);
+
+            ViewReceiptInfoCommand = new RelayCommand<object>(ViewReceiptInfo);
         }
 
         private void DeleteUser(object? obj)
@@ -277,6 +281,19 @@ namespace SuperMarket.ViewModels
                 _productBLL.DeleteProduct(product);
                 Products.Remove(product);
             }
+        }
+
+        private void ViewReceiptInfo(object? obj)
+        {
+            if (obj is not object[] values) return;
+            if (values[0] is not Receipt receipt || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+
+            var viewReceiptInfo = new ViewReceiptInfo(receipt);
+
+            currentPage.NavigationService?.Navigate(viewReceiptInfo);
         }
 
       

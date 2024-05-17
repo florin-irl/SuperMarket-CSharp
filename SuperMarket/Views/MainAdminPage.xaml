@@ -302,37 +302,35 @@ CommandParameter="{Binding SelectedItem}"
                                        IsReadOnly="True"
                                   Height="250"
                                       ItemsSource="{Binding Receipts}"
+                                      SelectedItem="{Binding SelectedItem}"
+                                      
                                       >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Issue Date" Width="200" Binding="{Binding IssueDate}"/>
-                                    <DataGridTextColumn Header="Cashier" Width="200" Binding="{Binding UserID}"/>
+                                    <DataGridTextColumn Header="Issue Date" Width="200" Binding="{Binding IssueDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
+                                    <DataGridTextColumn Header="Cashier" Width="200" Binding="{Binding User.Username}"/>
                                     <DataGridTextColumn Header="Total Price" Width="*" Binding="{Binding TotalPrice}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center">
-                                <Button x:Name="AddReceiptBtn"
-                                    Content="Add receipt"
-                                    Foreground="White"
-Background="Black"
-    Margin="0,25"
-    Height="35"
-    Width="250"/>
-                                <Button x:Name="ModifyReceiptBtn"
-                                        Content="Modify receipt"
+
+                                <Button x:Name="ShowReceiptbtn"
+                                        Content="Show Receipt Info"
                                     Foreground="White"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
-                                <Button x:Name="DeleteReceiptBtn"
-                                        Content="Delete receipt"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding ViewReceiptInfoCommand}">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource UserPageParametersConverter}">
+                                            <Binding Path="DataContext.SelectedItem" RelativeSource="{RelativeSource AncestorType={x:Type Page}}" />
+                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                </Button>
+                               
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

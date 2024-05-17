@@ -18,5 +18,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
             return _productReceiptDAL.GetAllProductReceipts();
         }
 
+        public ObservableCollection<ProductReceipt> GetProductReceiptsByReceiptId(int? receiptId)
+        {
+            return _productReceiptDAL.GetProductReceiptsByReceiptId(receiptId);
+        }
+
     }
 }

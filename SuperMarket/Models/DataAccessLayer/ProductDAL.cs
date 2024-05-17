@@ -30,6 +30,8 @@ namespace SuperMarket.Models.DataAccessLayer
                     product.CategoryId = reader.GetInt32(3);
                     product.ProducerId = reader.GetInt32(4);
                     product.IsActive = reader.GetBoolean(5);
+                    product.Producer = new ProducerDAL().GetProducerById(product.ProducerId);
+                    product.Category = new CategoryDAL().GetCategoryById(product.CategoryId);
                     products.Add(product);
                     Console.WriteLine(product.Name);
                 }
@@ -89,7 +91,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@Barcode", product.Barcode);
                 command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
                 command.Parameters.AddWithValue("@ProducerId", product.ProducerId);
-                command.Parameters.AddWithValue("@IsActive", product.IsActive);
                 command.ExecuteNonQuery();
             }
             catch

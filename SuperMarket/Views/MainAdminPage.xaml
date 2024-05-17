@@ -250,8 +250,8 @@ Background="Black"
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="Barcode" Width="300" Binding="{Binding Barcode}"/>
-                                <DataGridTextColumn Header="Category" Width="200" Binding="{Binding CategoryId}"/>
-                                <DataGridTextColumn Header="Producer" Width="*" Binding="{Binding ProducerId}"/>
+                                <DataGridTextColumn Header="Category" Width="200" Binding="{Binding Category.Name}"/>
+                                <DataGridTextColumn Header="Producer" Width="*" Binding="{Binding Producer.Name}"/>
                                 </DataGrid.Columns>
                         </DataGrid>
                             <StackPanel Orientation="Horizontal"
@@ -288,7 +288,7 @@ Background="Black"
                                         Margin="0,25"
                                         Height="35"
                                         Width="250"
-                                        Command="{Binding DeleteCategoryCommand}"
+                                        Command="{Binding DeleteProductCommand}"
 CommandParameter="{Binding SelectedItem}"
                                         />
                             </StackPanel>

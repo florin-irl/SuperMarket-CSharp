@@ -57,6 +57,10 @@ namespace SuperMarket.ViewModels
 
         public ICommand AddNewStockCommand { get; set; }
 
+        public ICommand AddNewProductCommand { get; set; }
+        public ICommand ModifyProductCommand { get; set; }
+        public ICommand DeleteProductCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -91,10 +95,15 @@ namespace SuperMarket.ViewModels
             AddNewCategoryCommand = new RelayCommand<object>(AddCategory);
 
             AddNewStockCommand = new RelayCommand<object>(AddStock);
+
+            AddNewProductCommand = new RelayCommand<object>(AddProduct);
+            ModifyProductCommand = new RelayCommand<object>(ModifyProduct);
+            DeleteProductCommand = new RelayCommand<object>(DeleteProduct);
         }
 
         private void DeleteUser(object? obj)
         {
+            if (SelectedItem is not User usr) return;
             // Display confirmation dialog
             var result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
@@ -145,6 +154,7 @@ namespace SuperMarket.ViewModels
 
         private void DeleteProducer(object? obj)
         {
+            if (SelectedItem is not Producer produ) return;
             if (new ProductBLL().GetAllProducts().Any(p => p.ProducerId == (SelectedItem as Producer).ProducerId))
             {
                 MessageBox.Show("Cannot delete producer because it is used in a product.");
@@ -209,6 +219,7 @@ namespace SuperMarket.ViewModels
 
         private void DeleteCategory(object? obj)
         {
+            if(SelectedItem is not Category cat) return;
             if (new ProductBLL().GetAllProducts().Any(p => p.CategoryId == (SelectedItem as Category).CategoryId))
             {
                 MessageBox.Show("Cannot delete category because it is used in a product.");
@@ -223,6 +234,48 @@ namespace SuperMarket.ViewModels
                 Console.WriteLine("DeleteCategory");
                 _categoryBLL.DeleteCategory(category);
                 Categories.Remove(category);
+            }
+        }
+
+        private void AddProduct(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var editProductPage = new Views.EditPages.EditProductPage();
+            currentPage.NavigationService?.Navigate(editProductPage);
+        }
+
+        private void ModifyProduct(object? obj)
+        {
+            if (obj is not object[] values) return;
+            if (values[0] is not Product product || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+
+            var productEditPage = new EditProductPage(product);
+
+            currentPage.NavigationService?.Navigate(productEditPage);
+        }
+
+        private void DeleteProduct(object? obj)
+        {
+            if (SelectedItem is not Product prod) return;
+            if (new StockBLL().GetAllStocks().Any(p => p.ProductId == (SelectedItem as Product).ProductId))
+            {
+                MessageBox.Show("Cannot delete product because it is used in a stock.");
+                return;
+            }
+            // Display confirmation dialog
+            var result = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            // Proceed with deletion if the user confirms
+            if (result == MessageBoxResult.Yes && SelectedItem is Product product)
+            {
+                _productBLL.DeleteProduct(product);
+                Products.Remove(product);
             }
         }
 

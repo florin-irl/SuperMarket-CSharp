@@ -42,7 +42,7 @@ namespace SuperMarket.ViewModels
 
         public void AddNewStock(object? obj)
         {
-            if (obj is not EditStockPage editUserPage)
+            if (obj is not EditOfferPage editUserPage)
             {
                 return;
             }

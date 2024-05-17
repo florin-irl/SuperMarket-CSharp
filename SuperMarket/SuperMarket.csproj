@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\EditCategoryPageViewModel.cs" />
+    <Compile Include="ViewModels\EditOfferPageViewModel.cs" />
     <Compile Include="ViewModels\EditProducersPageViewModel.cs" />
     <Compile Include="ViewModels\EditProductPageViewModel.cs" />
     <Compile Include="ViewModels\EditStockPageViewModel.cs" />

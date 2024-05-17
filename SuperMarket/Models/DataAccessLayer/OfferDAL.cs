@@ -31,6 +31,7 @@ namespace SuperMarket.Models.DataAccessLayer
                     offer.EndDate = reader.GetDateTime(4);
                     offer.Reason = reader.GetString(5);
                     offer.IsActive = reader.GetBoolean(6);
+                    offer.Product = new ProductDAL().GetProductById(offer.ProductId);
                     offers.Add(offer);
                 }
 
@@ -89,11 +90,10 @@ namespace SuperMarket.Models.DataAccessLayer
                 SqlCommand command = new SqlCommand("spOffersInsert", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@ProductId", offer.ProductId);
-                command.Parameters.AddWithValue("@DiscountPercentage", offer.DiscountPercentage);
+                command.Parameters.AddWithValue("@DiscountPerc", offer.DiscountPercentage);
                 command.Parameters.AddWithValue("@StartDate", offer.StartDate);
                 command.Parameters.AddWithValue("@EndDate", offer.EndDate);
                 command.Parameters.AddWithValue("@Reason", offer.Reason);
-                command.Parameters.AddWithValue("@IsActive", offer.IsActive);
                 command.ExecuteNonQuery();
             }
             catch
@@ -116,11 +116,10 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@OfferId", offer.OfferId);
                 command.Parameters.AddWithValue("@ProductId", offer.ProductId);
-                command.Parameters.AddWithValue("@DiscountPercentage", offer.DiscountPercentage);
+                command.Parameters.AddWithValue("@DiscountPerc", offer.DiscountPercentage);
                 command.Parameters.AddWithValue("@StartDate", offer.StartDate);
                 command.Parameters.AddWithValue("@EndDate", offer.EndDate);
                 command.Parameters.AddWithValue("@Reason", offer.Reason);
-                command.Parameters.AddWithValue("@IsActive", offer.IsActive);
                 command.ExecuteNonQuery();
             }
             catch

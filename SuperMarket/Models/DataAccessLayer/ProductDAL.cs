@@ -47,7 +47,7 @@ namespace SuperMarket.Models.DataAccessLayer
             return products;
         }
 
-        public Product GetProductById(int productId)
+        public Product GetProductById(int? productId)
         {
             Product product = new Product();
             SqlConnection connection = DALHelper.Connection;

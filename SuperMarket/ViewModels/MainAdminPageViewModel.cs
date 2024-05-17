@@ -63,6 +63,10 @@ namespace SuperMarket.ViewModels
 
         public ICommand ViewReceiptInfoCommand { get; set; }
 
+        public ICommand DeleteOfferCommand { get; set; }
+        public ICommand AddOfferCommand { get; set; }
+        public ICommand ModifyOfferCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -103,6 +107,13 @@ namespace SuperMarket.ViewModels
             DeleteProductCommand = new RelayCommand<object>(DeleteProduct);
 
             ViewReceiptInfoCommand = new RelayCommand<object>(ViewReceiptInfo);
+
+            DeleteOfferCommand = new RelayCommand<object>(DeleteOffer);
+            AddOfferCommand = new RelayCommand<object>(AddOffer);
+            ModifyOfferCommand = new RelayCommand<object>(ModifyOffer);
+
+
+            
         }
 
         private void DeleteUser(object? obj)
@@ -152,7 +163,7 @@ namespace SuperMarket.ViewModels
             {
                 return;
             }
-            var editStockPage = new Views.EditPages.EditStockPage();
+            var editStockPage = new Views.EditPages.EditOfferPage();
             currentPage.NavigationService?.Navigate(editStockPage);
         }
 
@@ -294,6 +305,43 @@ namespace SuperMarket.ViewModels
             var viewReceiptInfo = new ViewReceiptInfo(receipt);
 
             currentPage.NavigationService?.Navigate(viewReceiptInfo);
+        }
+
+        private void DeleteOffer(object? obj)
+        {
+            if (SelectedItem is not Offer off) return;
+            // Display confirmation dialog
+            var result = MessageBox.Show("Are you sure you want to delete this offer?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            // Proceed with deletion if the user confirms
+            if (result == MessageBoxResult.Yes && SelectedItem is Offer offer)
+            {
+                _offerBLL.DeleteOffer(offer);
+                Offers.Remove(offer);
+            }
+        }
+
+        private void AddOffer(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var editOfferPage = new EditOffersPage();
+            currentPage.NavigationService?.Navigate(editOfferPage);
+        }
+
+        private void ModifyOffer(object? obj)
+        {
+            if (obj is not object[] values) return;
+            if (values[0] is not Offer offer || values[1] is not MainAdminPage currentPage)
+            {
+                return;
+            }
+
+            var offerEditPage = new EditOffersPage(offer);
+
+            currentPage.NavigationService?.Navigate(offerEditPage);
         }
 
       

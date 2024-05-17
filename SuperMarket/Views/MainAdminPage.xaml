@@ -341,13 +341,15 @@ CommandParameter="{Binding SelectedItem}"
                                   CanUserAddRows="False"
                                    IsReadOnly="True"
                                   Height="250"
-                                  ItemsSource="{Binding Offers}">
+                                  ItemsSource="{Binding Offers}"
+                                  SelectedItem="{Binding SelectedItem}"
+                                  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Product" Width="100" Binding="{Binding ProductId}"/>
-                                <DataGridTextColumn Header="Discount" Width="100" Binding="{Binding DiscountPercentage}"/>
-                                    <DataGridTextColumn Header="Start Date" Width="250" Binding="{Binding StartDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
-                                    <DataGridTextColumn Header="End Date" Width="250" Binding="{Binding EndDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
-                                <DataGridTextColumn Header="Reason" Width="*" Binding="{Binding Reason}"/>
+                                <DataGridTextColumn Header="Product" Width="*" Binding="{Binding Product.Name}"/>
+                                <DataGridTextColumn Header="Discount %" Width="100" Binding="{Binding DiscountPercentage}"/>
+                                    <DataGridTextColumn Header="Start Date" Width="150" Binding="{Binding StartDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
+                                    <DataGridTextColumn Header="End Date" Width="150" Binding="{Binding EndDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
+                                <DataGridTextColumn Header="Reason" Width="200" Binding="{Binding Reason}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                             <StackPanel Orientation="Horizontal"
@@ -358,21 +360,35 @@ CommandParameter="{Binding SelectedItem}"
 Background="Black"
     Margin="0,25"
     Height="35"
-    Width="250"/>
+    Width="250"
+                                        Command="{Binding AddOfferCommand}"
+                                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                        />
                                 <Button x:Name="ModifyOfferBtn"
                                         Content="Modify offer"
                                     Foreground="White"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding ModifyOfferCommand}">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource UserPageParametersConverter}">
+                                            <Binding Path="DataContext.SelectedItem" RelativeSource="{RelativeSource AncestorType={x:Type Page}}" />
+                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                </Button>
                                 <Button x:Name="DeleteOfferBtn"
                                         Content="Delete offer"
                                     Foreground="White"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding DeleteOfferCommand}"
+                                        CommandParameter="{Binding SelectedItem}"
+                                        />
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

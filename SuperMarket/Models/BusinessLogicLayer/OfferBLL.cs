@@ -16,5 +16,20 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             return _offerDAL.GetAllOffers();
         }
+
+        public void DeleteOffer(Offer offer)
+        {
+            _offerDAL.DeleteOffer(offer);
+        }
+
+        public void UpdateOffer(Offer offer)
+        {
+            _offerDAL.ModifyOffer(offer);
+        }
+
+        public void AddOffer(Offer offer)
+        {
+            _offerDAL.AddOffer(offer);
+        }
     }
 }

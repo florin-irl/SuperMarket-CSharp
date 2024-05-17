@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SuperMarket.Models.EntityLayer;
+using SuperMarket.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,13 @@ namespace SuperMarket.Views.EditPages
         public EditOffersPage()
         {
             InitializeComponent();
+            DataContext = new EditOfferPageViewModel();
+        }
+
+        public EditOffersPage(Offer offer)
+        {
+            InitializeComponent();
+            DataContext = new EditOfferPageViewModel(offer);
         }
     }
 }

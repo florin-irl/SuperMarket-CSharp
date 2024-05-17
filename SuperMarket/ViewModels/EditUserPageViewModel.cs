@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace SuperMarket.ViewModels
 {
@@ -87,10 +88,8 @@ namespace SuperMarket.ViewModels
                 return;
             }
             var users = _userBLL.GetAllUsers();
-            var isUnique = (from user in users
-                                                       where user.Username == Username
-                                                                                  select user).ToList().Count == 0;
-            if(isUnique==false) { 
+            var isUnique = !users.Any(user => user.Username == Username &&  user.UserId != Id);
+            if (isUnique==false) { 
                 var warning = MessageBox.Show("Username already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return; }
             if (Add == false)

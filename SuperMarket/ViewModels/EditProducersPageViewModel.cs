@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SuperMarket.ViewModels
@@ -71,6 +72,14 @@ namespace SuperMarket.ViewModels
         {
             if (obj is not EditProducersPage editProducersPage)
             {
+                return;
+            }
+            var producers = _producerBLL.GetAllProducers();
+            var isUnique = !producers.Any(producer => producer.Name == Name && producer.ProducerId != Id);
+
+            if (isUnique == false)
+            {
+                var warning = MessageBox.Show("Producer already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (Add == false)

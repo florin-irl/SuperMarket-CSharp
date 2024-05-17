@@ -32,6 +32,7 @@ namespace SuperMarket.Models.DataAccessLayer
                     stock.ProductId = sqlDataReader.GetInt32(5);
                     stock.AquisitionCost = sqlDataReader.GetDecimal(6);
                     stock.IsActive = sqlDataReader.GetBoolean(7);
+                    stock.Product = new ProductDAL().GetProductById(stock.ProductId);
                     stocks.Add(stock);
                 }
             }

@@ -104,7 +104,7 @@ Background="Black"
                                        IsReadOnly="True"
                                       ItemsSource="{Binding Stocks}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ProductId" Width="75" Binding="{Binding ProductId}"/>
+                                    <DataGridTextColumn Header="Product" Width="250" Binding="{Binding Product.Name}"/>
                                     <DataGridTextColumn Header="Quantity" Width="75" Binding="{Binding Quantity}"/>
                                     <DataGridTextColumn Header="Unit" Width="75" Binding="{Binding Unit}"/>
                                     <DataGridTextColumn Header="Supply Date" Width="125" Binding="{Binding SupplyDate, StringFormat=\{0:MM/dd/yyyy\}}"/>
@@ -122,13 +122,6 @@ Background="Black"
     Margin="0,25"
     Height="35"
     Width="250"/>
-                                <Button x:Name="ModifyStockBtn"
-                                        Content="Modify stock"
-                                    Foreground="White"
-                                        Background="Black"
-                                        Margin="0,25"
-                                        Height="35"
-                                        Width="250"/>
                                 <Button x:Name="DeleteStockBtn"
                                         Content="Delete stock"
                                     Foreground="White"
@@ -255,6 +248,7 @@ Background="Black"
                                    IsReadOnly="True"
                                   Height="250"
                                   ItemsSource="{Binding Products}"
+                                  SelectedItem="{Binding SelectedItem}"
                                   >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Name}"/>
@@ -271,21 +265,35 @@ Background="Black"
 Background="Black"
     Margin="0,25"
     Height="35"
-    Width="250"/>
+    Width="250"
+                                        Command="{Binding AddNewProductCommand}"
+                                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                        />
                                 <Button x:Name="ModifyProductBtn"
                                         Content="Modify product"
                                     Foreground="White"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                            Command="{Binding ModifyProductCommand}">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource UserPageParametersConverter}">
+                                            <Binding Path="DataContext.SelectedItem" RelativeSource="{RelativeSource AncestorType={x:Type Page}}" />
+                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                </Button>
                                 <Button x:Name="DeleteProductBtn"
                                         Content="Delete product"
                                     Foreground="White"
                                         Background="Black"
                                         Margin="0,25"
                                         Height="35"
-                                        Width="250"/>
+                                        Width="250"
+                                        Command="{Binding DeleteCategoryCommand}"
+CommandParameter="{Binding SelectedItem}"
+                                        />
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

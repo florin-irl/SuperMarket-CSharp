@@ -145,6 +145,11 @@ namespace SuperMarket.ViewModels
 
         private void DeleteProducer(object? obj)
         {
+            if (new ProductBLL().GetAllProducts().Any(p => p.ProducerId == (SelectedItem as Producer).ProducerId))
+            {
+                MessageBox.Show("Cannot delete producer because it is used in a product.");
+                return;
+            }
             // Display confirmation dialog
             var result = MessageBox.Show("Are you sure you want to delete this producer?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

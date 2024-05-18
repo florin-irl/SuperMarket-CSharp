@@ -59,6 +59,8 @@ CornerRadius="10">
                             Margin="0,0,0,10"
                                 Background="Black"
                                 Foreground="White"
+                                Command="{Binding GenerateReportCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
                             />
 
 
@@ -74,13 +76,13 @@ CornerRadius="10">
                               IsReadOnly="True"
                               Margin="20"
                               Width="700"
-                              Height="450">
-                        >
+                              Height="450"
+                              ItemsSource="{Binding Revenues}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Date"
-                                                Width="*"/>
+                                                Width="*" Binding="{Binding Date, StringFormat=\{0:MM/dd/yyyy\}}"/>
                             <DataGridTextColumn Header="Total"
-                                                Width="*"/>
+                                                Width="*" Binding="{Binding TotalRevenue}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

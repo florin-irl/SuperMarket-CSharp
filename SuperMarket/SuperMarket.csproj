@@ -102,9 +102,11 @@
     <Compile Include="Models\BusinessLogicLayer\StockBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\UserBLL.cs" />
     <Compile Include="Models\EntityLayer\CategoryValue.cs" />
+    <Compile Include="Models\EntityLayer\DateRevenue.cs" />
     <Compile Include="Models\UserPageParameters.cs" />
     <Compile Include="Models\UserPageParametersConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CashierRevenuePageViewModel.cs" />
     <Compile Include="ViewModels\CategoryValuePageViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\EditCategoryPageViewModel.cs" />
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Views\MainCashierPage.xaml.cs">
       <DependentUpon>MainCashierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpecialQueries\CashierRevenueMonthPage.xaml.cs">
+      <DependentUpon>CashierRevenueMonthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SpecialQueries\CategoryValuePage.xaml.cs">
       <DependentUpon>CategoryValuePage.xaml</DependentUpon>
@@ -210,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainCashierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpecialQueries\CashierRevenueMonthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

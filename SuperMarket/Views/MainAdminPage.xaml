@@ -427,7 +427,10 @@ Background="Black"
                             Background="Black"
                             Margin="0,25"
                             Width="250"
-                            Height="35"/>
+                            Height="35"
+                            Command="{Binding GoToUserRevenueMonthlyCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                            />
                     <Button x:Name="HighestValueReceiptByDateBtn"
                             Content="Info of Heighest Value Receipt by Date"
                             Foreground="White"

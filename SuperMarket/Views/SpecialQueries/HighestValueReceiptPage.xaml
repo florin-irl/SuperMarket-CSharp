@@ -1,0 +1,107 @@
+﻿<Page x:Class="SuperMarket.Views.SpecialQueries.HighestValueReceiptPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperMarket.Views.SpecialQueries"
+      xmlns:vm="clr-namespace:SuperMarket.ViewModels"
+      xmlns:res="clr-namespace:SuperMarket.Models"
+      mc:Ignorable="d" 
+        d:DesignHeight="675" d:DesignWidth="1200"
+      Title="HighestValueReceiptPage">
+    <Page.Resources>
+        <res:UserPageParametersConverter x:Key="UserPageParametersConverter"/>
+    </Page.Resources>
+    <Page.DataContext>
+        <vm:HighestValueReceiptPageViewModel/>
+    </Page.DataContext>
+    <Grid Background="White">
+        <Border Width="600"
+Height="500"
+Background="White"
+CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                  Direction="-90"
+                  RenderingBias="Quality"
+                  ShadowDepth="2"
+                  Color="Gray"/>
+            </Border.Effect>
+            <StackPanel Orientation="Vertical"
+                    Margin="20">
+                <TextBlock Text="Highest Value Receipt Info"
+                           FontSize="30"
+                       FontWeight="Bold"
+                       Margin="10"
+                       HorizontalAlignment="Center"/>
+                <DatePicker x:Name="datePicker"
+                            Width="200"
+                            Height="30"
+                            Margin="10"
+                            BorderThickness="0,0,0,1"
+                            HorizontalAlignment="Center"
+                            SelectedDate="{Binding SelectedDate}"
+                            />
+                <Button x:Name="btnGetHighestValueReceipt"
+                        Content="Get Highest Value Receipt"
+                        Width="200"
+                        Height="30"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Background="Black"
+                        Foreground="White"
+                        Command="{Binding FindHighestReceiptCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+
+                />
+                <TextBlock Text="Cashier"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Margin="10"
+                           HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtCashier"
+                         Width="200"
+                         Height="30"
+                         Margin="0"
+                         HorizontalAlignment="Center"
+                         BorderThickness="0,0,0,1"
+                         IsReadOnly="True"
+                         Text="{Binding CashierName}"
+                         />
+                <TextBlock Text="Total"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Margin="10"
+                           HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtTotal"
+                         Width="200"
+                         Height="30"
+                         Margin="0"
+                         HorizontalAlignment="Center"
+                         BorderThickness="0,0,0,1"
+                         IsReadOnly="True"
+                         Text="{Binding TotalValue}"
+                         />
+                <Button x:Name="ShowProductsBtn"
+                        Content="Show Products"
+                        Width="200"
+                        Height="30"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Background="Black"
+                        Foreground="White"
+                        IsEnabled="{Binding CanListReceipts}"
+                        Command="{Binding ViewReceiptInfoCommand}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource UserPageParametersConverter}">
+                            <Binding Path="DataContext.FoundReceipt" RelativeSource="{RelativeSource AncestorType={x:Type Page}}" />
+                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Page>

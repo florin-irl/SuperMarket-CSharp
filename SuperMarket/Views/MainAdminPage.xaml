@@ -417,7 +417,10 @@ Background="Black"
                             Background="Black"
                             Margin="0,25"
                             Width="250"
-                            Height="35"/>
+                            Height="35"
+                            Command="{Binding GoToCategoryValueCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                            />
                     <Button x:Name="ValueByMonthUserBtn"
                             Content="Profit by User/Month"
                             Foreground="White"
@@ -431,7 +434,10 @@ Background="Black"
                             Background="Black"
                             Margin="0,25"
                             Width="250"
-                            Height="35"/>
+                            Height="35"
+                            Command="{Binding GoToHighestValueReceiptCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                            />
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -69,6 +69,9 @@ namespace SuperMarket.ViewModels
         public ICommand ModifyOfferCommand { get; set; }
 
         public ICommand GoToProducersCategoryListCommand { get; set; }
+        public ICommand GoToCategoryValueCommand { get; set; }
+
+        public ICommand GoToHighestValueReceiptCommand { get; set; }
 
         private object _selectedItem;
         public object SelectedItem
@@ -116,6 +119,8 @@ namespace SuperMarket.ViewModels
             ModifyOfferCommand = new RelayCommand<object>(ModifyOffer);
 
             GoToProducersCategoryListCommand = new RelayCommand<object>(GoToProducersCategoryList);
+            GoToCategoryValueCommand = new RelayCommand<object>(GoToCategoryValue);
+            GoToHighestValueReceiptCommand = new RelayCommand<object>(GoToHighestValueReceipt);
             
         }
 
@@ -355,6 +360,26 @@ namespace SuperMarket.ViewModels
             }
             var producerCategoryPage = new ProducerCategoriesPage();
             currentPage.NavigationService?.Navigate(producerCategoryPage);
+        }
+
+        private void GoToCategoryValue(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var categoryValuePage = new CategoryValuePage();
+            currentPage.NavigationService?.Navigate(categoryValuePage);
+        }
+
+        private void GoToHighestValueReceipt(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var highestValueReceiptPage = new HighestValueReceiptPage();
+            currentPage.NavigationService?.Navigate(highestValueReceiptPage);
         }
 
       

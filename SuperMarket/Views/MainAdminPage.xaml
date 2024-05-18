@@ -407,7 +407,10 @@ Background="Black"
                             Background="Black"
                             Margin="0,25"
                             Width="250"
-                            Height="35"/>
+                            Height="35"
+                            Command="{Binding GoToProducersCategoryListCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                            />
                     <Button x:Name="ValueOfCategoryBtn"
                             Content="List Value of Category"
                             Foreground="White"

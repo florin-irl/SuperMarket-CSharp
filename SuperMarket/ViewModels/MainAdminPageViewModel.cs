@@ -5,6 +5,7 @@ using SuperMarket.Models.EntityLayer;
 using SuperMarket.ViewModels.Commands;
 using SuperMarket.Views;
 using SuperMarket.Views.EditPages;
+using SuperMarket.Views.SpecialQueries;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -67,6 +68,8 @@ namespace SuperMarket.ViewModels
         public ICommand AddOfferCommand { get; set; }
         public ICommand ModifyOfferCommand { get; set; }
 
+        public ICommand GoToProducersCategoryListCommand { get; set; }
+
         private object _selectedItem;
         public object SelectedItem
         {
@@ -112,7 +115,7 @@ namespace SuperMarket.ViewModels
             AddOfferCommand = new RelayCommand<object>(AddOffer);
             ModifyOfferCommand = new RelayCommand<object>(ModifyOffer);
 
-
+            GoToProducersCategoryListCommand = new RelayCommand<object>(GoToProducersCategoryList);
             
         }
 
@@ -342,6 +345,16 @@ namespace SuperMarket.ViewModels
             var offerEditPage = new EditOffersPage(offer);
 
             currentPage.NavigationService?.Navigate(offerEditPage);
+        }
+
+        private void GoToProducersCategoryList(object? obj)
+        {
+            if (obj is not MainAdminPage currentPage)
+            {
+                return;
+            }
+            var producerCategoryPage = new ProducerCategoriesPage();
+            currentPage.NavigationService?.Navigate(producerCategoryPage);
         }
 
       

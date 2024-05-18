@@ -114,6 +114,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainAdminPageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ProducerCategoryPageViewModel.cs" />
     <Compile Include="ViewModels\ViewReceiptInfoViewModel.cs" />
     <Compile Include="Views\EditPages\EditCategoryPage.xaml.cs">
       <DependentUpon>EditCategoryPage.xaml</DependentUpon>
@@ -144,6 +145,9 @@
     </Compile>
     <Compile Include="Views\MainCashierPage.xaml.cs">
       <DependentUpon>MainCashierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpecialQueries\ProducerCategoriesPage.xaml.cs">
+      <DependentUpon>ProducerCategoriesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewReceiptInfo.xaml.cs">
       <DependentUpon>ViewReceiptInfo.xaml</DependentUpon>
@@ -197,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainCashierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpecialQueries\ProducerCategoriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

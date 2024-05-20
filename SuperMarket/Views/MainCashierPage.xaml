@@ -6,10 +6,122 @@
       xmlns:local="clr-namespace:SuperMarket.Views"
       
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="675" d:DesignWidth="1200"
       Title="MainCashierPage">
         
-    <Grid>
-        
+    <Grid Background="White">
+        <Border Width="1125"
+         Height="600"
+         Background="White"
+         CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                       Direction="-90"
+                       RenderingBias="Quality"
+                       ShadowDepth="2"
+                       Color="Gray"></DropShadowEffect>
+                
+            </Border.Effect>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Cashier"
+           FontSize="30"
+           FontWeight="Bold"
+           HorizontalAlignment="Left"
+           Margin="20"/>
+           
+            <StackPanel Orientation="Horizontal">
+                
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Search"
+              FontSize="20"
+              HorizontalAlignment="Left"
+              Margin="20,0,0,0"/>
+                            <TextBox Width="200"
+            Height="30"
+            Margin="20,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Filter"
+                                       FontSize="20"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,0,0,0"/>
+                            <ComboBox Width="150"
+                                          Height="30"
+                                          Margin="20,0,0,0"/>
+
+                        </StackPanel>
+                        <Button x:Name="SearchBtn"
+                                Content="Search"
+                                Width="100"
+                                Height="30"
+                                Background="Black"
+                                Foreground="White"
+                                Margin="20,25,0,0"/>
+
+
+                    </StackPanel>
+                    <DataGrid x:Name="dgSearchProducts"
+                              HorizontalAlignment="Left"
+Width="490"
+Height="400"
+Margin="20,10,0,0"
+AutoGenerateColumns="False"
+CanUserAddRows="False"
+CanUserDeleteRows="False"
+CanUserReorderColumns="False"
+CanUserResizeColumns="False"
+CanUserResizeRows="False"
+CanUserSortColumns="False"
+IsReadOnly="True"
+SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Product Name" Width="*"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical"
+                            Margin="100,0,0,0">
+                        <TextBlock Text="Cart"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               Margin="20,0,0,0"/>
+                        <DataGrid x:Name="dgCart"
+                                  HorizontalAlignment="Left"
+                                  Width="450"
+                                  Height="350"
+                                  Margin="20,10,0,0"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserReorderColumns="False"
+                                  CanUserResizeColumns="False"
+                                  CanUserResizeRows="False"
+                                  CanUserSortColumns="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Product" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="OkReceiptBtn"
+                            Content="Ok"
+                            Width="100"
+                            Height="30"
+                            Background="Black"
+                            Foreground="White"
+                            Margin="20,10,0,0"/>
+
+                    </StackPanel>
+            </StackPanel>
+                
+            </StackPanel>
+        </Border>
+
     </Grid>
 </Page>

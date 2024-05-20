@@ -2,13 +2,18 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:SuperMarket.ViewModels"
       xmlns:local="clr-namespace:SuperMarket.Views"
       
       mc:Ignorable="d" 
       d:DesignHeight="675" d:DesignWidth="1200"
       Title="MainCashierPage">
-        
+
+
+    <Page.DataContext>
+        <vm:MainCashierPageViewModel/>
+    </Page.DataContext>
     <Grid Background="White">
         <Border Width="1125"
          Height="600"
@@ -41,7 +46,8 @@
               Margin="20,0,0,0"/>
                             <TextBox Width="200"
             Height="30"
-            Margin="20,0,0,0"/>
+            Margin="20,0,0,0"
+                                     Text="{Binding SearchText}"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Filter"
@@ -50,7 +56,10 @@
                                        Margin="20,0,0,0"/>
                             <ComboBox Width="150"
                                           Height="30"
-                                          Margin="20,0,0,0"/>
+                                          Margin="20,0,0,0"
+                                          ItemsSource="{Binding FilterList}"
+                                          SelectedItem="{Binding SelectedFilter}"
+                                      />
 
                         </StackPanel>
                         <Button x:Name="SearchBtn"
@@ -59,7 +68,10 @@
                                 Height="30"
                                 Background="Black"
                                 Foreground="White"
-                                Margin="20,25,0,0"/>
+                                Margin="20,25,0,0"
+                                Command="{Binding SearchCommand}"
+                                CommandParameter="{Binding SearchText}"
+                                />
 
 
                     </StackPanel>
@@ -76,15 +88,24 @@ CanUserResizeColumns="False"
 CanUserResizeRows="False"
 CanUserSortColumns="False"
 IsReadOnly="True"
-SelectionMode="Single">
+SelectionMode="Single"
+                              ItemsSource="{Binding SelectedProducts}"
+                              >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Product Name" Width="*"/>
+                            <DataGridTextColumn Header="Product" Width="*" Binding="{Binding Name}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>
+                        <Button x:Name="AddProductBtn"
+                            Content="Add Product"
+                            Width="100"
+                            Height="30"
+                            Background="Black"
+                            Foreground="White"
+                            Margin="20,10,0,0"/>
 
 
-                </StackPanel>
+                    </StackPanel>
                 <StackPanel Orientation="Vertical"
                             Margin="100,0,0,0">
                         <TextBlock Text="Cart"
@@ -104,18 +125,23 @@ SelectionMode="Single">
                                   CanUserResizeRows="False"
                                   CanUserSortColumns="False"
                                   IsReadOnly="True"
-                                  SelectionMode="Single">
+                                  SelectionMode="Single"
+                                  ItemsSource="{Binding CartList}"
+                                  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Product" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button x:Name="OkReceiptBtn"
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="OkReceiptBtn"
                             Content="Ok"
                             Width="100"
                             Height="30"
                             Background="Black"
                             Foreground="White"
                             Margin="20,10,0,0"/>
+                           
+                        </StackPanel>
 
                     </StackPanel>
             </StackPanel>

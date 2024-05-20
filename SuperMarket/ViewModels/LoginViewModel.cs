@@ -1,4 +1,5 @@
 ﻿using SuperMarket.Models.BusinessLogicLayer;
+using SuperMarket.Services;
 using SuperMarket.ViewModels.Commands;
 using SuperMarket.Views;
 using System;
@@ -64,6 +65,7 @@ namespace SuperMarket.ViewModels
 
             if(_userBLL.IsUser(Username,Password))
             {
+                UserSession.Instance.SetUser(_userBLL.GetAllUsers().FirstOrDefault(x => x.Username == Username));
                 frame.Navigate(new Uri("Views/MainCashierPage.xaml", UriKind.Relative));
             }
 

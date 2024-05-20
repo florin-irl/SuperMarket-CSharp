@@ -87,7 +87,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 sqlCommand.Parameters.AddWithValue("@ReceiptId", productReceipt.ReceiptId);
                 sqlCommand.Parameters.AddWithValue("@Quantity", productReceipt.Quantity);
                 sqlCommand.Parameters.AddWithValue("@Subtotal", productReceipt.Subtotal);
-                sqlCommand.Parameters.AddWithValue("@IsActive", productReceipt.IsActive);
                 sqlCommand.ExecuteNonQuery();
             }
             catch

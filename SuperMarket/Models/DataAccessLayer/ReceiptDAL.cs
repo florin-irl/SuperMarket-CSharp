@@ -84,9 +84,8 @@ namespace SuperMarket.Models.DataAccessLayer
                 SqlCommand command = new SqlCommand("spReceiptsInsert", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IssueDate", receipt.IssueDate);
-                command.Parameters.AddWithValue("@UserID", receipt.UserID);
-                command.Parameters.AddWithValue("@TotalPrice", receipt.TotalPrice);
-                command.Parameters.AddWithValue("@IsActive", receipt.IsActive);
+                command.Parameters.AddWithValue("@UserId", receipt.UserID);
+                command.Parameters.AddWithValue("@Total", receipt.TotalPrice);
                 command.ExecuteNonQuery();
             }
             catch

@@ -122,7 +122,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 sqlCommand.Parameters.AddWithValue("@ExpirationDate", stock.ExpirationDate);
                 sqlCommand.Parameters.AddWithValue("@ProductId", stock.ProductId);
                 sqlCommand.Parameters.AddWithValue("@AquisitionCost", stock.AquisitionCost);
-                sqlCommand.Parameters.AddWithValue("@IsActive", stock.IsActive);
                 sqlCommand.ExecuteNonQuery();
             }
             catch

@@ -22,5 +22,15 @@ namespace SuperMarket.Models.BusinessLogicLayer
         {
             _stockDAL.AddStock(stock);
         }
+
+        public void UpdateStock(Stock stock)
+        {
+            _stockDAL.ModifyStock(stock);
+        }
+
+        internal void DeleteStock(Stock stock)
+        {
+            _stockDAL.DeleteStock(stock);
+        }
     }
 }

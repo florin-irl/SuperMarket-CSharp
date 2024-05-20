@@ -90,6 +90,7 @@ CanUserSortColumns="False"
 IsReadOnly="True"
 SelectionMode="Single"
                               ItemsSource="{Binding SelectedProducts}"
+                              SelectedItem="{Binding SelectedItem}"
                               >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Product" Width="*" Binding="{Binding Name}"/>
@@ -102,7 +103,10 @@ SelectionMode="Single"
                             Height="30"
                             Background="Black"
                             Foreground="White"
-                            Margin="20,10,0,0"/>
+                            Margin="20,10,0,0"
+                                Command="{Binding AddToCartCommand}"
+                                CommandParameter="{Binding SelectedItem}"
+                                />
 
 
                     </StackPanel>
@@ -129,9 +133,20 @@ SelectionMode="Single"
                                   ItemsSource="{Binding CartList}"
                                   >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Product" Width="*"/>
+                                <DataGridTextColumn Header="Product" Width="*" Binding="{Binding cartProduct.Name}"/>
+                                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding cartPrice}"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Total"
+                                       FontSize="20"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,0,0,0"/>
+                            <TextBlock Text="{Binding TotalPrice}"
+                                       FontSize="20"
+                                       HorizontalAlignment="Right"
+                                       Margin="330,0,0,0"/>
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="OkReceiptBtn"
                             Content="Ok"
@@ -139,7 +154,10 @@ SelectionMode="Single"
                             Height="30"
                             Background="Black"
                             Foreground="White"
-                            Margin="20,10,0,0"/>
+                            Margin="20,10,0,0"
+                                    Command="{Binding CreateReceiptCommand}"
+                                    CommandParameter="{Binding CartList}"
+                                    />
                            
                         </StackPanel>
 

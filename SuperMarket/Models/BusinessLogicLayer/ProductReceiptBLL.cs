@@ -23,5 +23,10 @@ namespace SuperMarket.Models.BusinessLogicLayer
             return _productReceiptDAL.GetProductReceiptsByReceiptId(receiptId);
         }
 
+        public void AddProductReceipt(ProductReceipt productReceipt)
+        {
+            _productReceiptDAL.AddProductReceipt(productReceipt);
+        }
+
     }
 }

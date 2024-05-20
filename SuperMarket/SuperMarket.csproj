@@ -104,8 +104,10 @@
     <Compile Include="Models\EntityLayer\CategoryValue.cs" />
     <Compile Include="Models\EntityLayer\DateRevenue.cs" />
     <Compile Include="Models\EntityLayer\ProductPrice.cs" />
+    <Compile Include="Models\EntityLayer\ProductQuantity.cs" />
     <Compile Include="Models\UserPageParameters.cs" />
     <Compile Include="Models\UserPageParametersConverter.cs" />
+    <Compile Include="Services\UserSession.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CashierRevenuePageViewModel.cs" />
     <Compile Include="ViewModels\CategoryValuePageViewModel.cs" />

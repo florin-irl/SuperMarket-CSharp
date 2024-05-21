@@ -160,6 +160,10 @@ namespace SuperMarket.ViewModels
                 IssueDate = DateTime.Now
             };
             _receiptBLL.AddReceipt(receipt);
+            var lastReceipt = _receiptBLL.GetAllReceipts()
+                             .OrderByDescending(r => r.ReceiptID)
+                             .FirstOrDefault();
+
 
             // Dictionary to hold product IDs and their quantities
             Dictionary<int, int> productQuantities = new Dictionary<int, int>();
@@ -181,7 +185,7 @@ namespace SuperMarket.ViewModels
                 ProductReceipt productReceipt = new ProductReceipt
                 {
                     ProductId = productQuantity.Key,
-                    ReceiptId = receipt.ReceiptID ?? 0,
+                    ReceiptId = lastReceipt.ReceiptID??0,
                     Quantity = productQuantity.Value,
                     Subtotal = CartList.Where(x => x.cartProduct.ProductId == productQuantity.Key).FirstOrDefault().cartPrice * productQuantity.Value
                 };

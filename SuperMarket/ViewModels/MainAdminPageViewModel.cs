@@ -172,7 +172,7 @@ namespace SuperMarket.ViewModels
             {
                 return;
             }
-            var editStockPage = new Views.EditPages.EditOfferPage();
+            var editStockPage = new EditStockPage();
             currentPage.NavigationService?.Navigate(editStockPage);
         }
 

@@ -17,11 +17,42 @@ namespace SuperMarket.ViewModels
     {
         public int Quantity { get; set; }
         public string Unit { get; set; }
-        public DateTime SupplyDate { get; set; }
-        public DateTime ExpirationDate { get; set; }
+
+        private DateTime _supplyDate;
+        public DateTime SupplyDate
+        {
+            get { return _supplyDate; }
+            set
+            {
+                _supplyDate = value;
+                OnPropertyChanged("SupplyDate");
+            }
+        }
+
+        private DateTime _expirationDate;
+        public DateTime ExpirationDate
+        {
+            get { return _expirationDate; }
+            set
+            {
+                _expirationDate = value;
+                OnPropertyChanged("ExpirationDate");
+            }
+        }
         public int ProductId { get; set; }
         public decimal AquisitionCost { get; set; }
-        public ObservableCollection<string> Products { get; set; }
+
+        private ObservableCollection<string> _products;        
+        public ObservableCollection<string> Products
+        {
+            get { return _products; }
+            set
+            {
+                _products = value;
+                OnPropertyChanged("Products");
+            }
+        }
+    
 
         public string ProductName { get; set; }
 
@@ -32,17 +63,19 @@ namespace SuperMarket.ViewModels
         public EditStockPageViewModel()
         {
             AddNewStockCommand = new RelayCommand<object>(AddNewStock);
-            ObservableCollection<Product> products = ProductBLL.GetAllProducts();
+            ObservableCollection<Product> productss = ProductBLL.GetAllProducts();
             Products = new ObservableCollection<string>();
-            foreach (var product in products)
+            foreach (var product in productss)
             {
                 Products.Add(product.Name);
             }
+            SupplyDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            ExpirationDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
         public void AddNewStock(object? obj)
         {
-            if (obj is not EditOfferPage editUserPage)
+            if (obj is not EditStockPage editUserPage)
             {
                 return;
             }

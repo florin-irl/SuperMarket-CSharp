@@ -116,7 +116,6 @@ namespace SuperMarket.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@Barcode", product.Barcode);
                 command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
                 command.Parameters.AddWithValue("@ProducerId", product.ProducerId);
-                command.Parameters.AddWithValue("@IsActive", product.IsActive);
                 command.ExecuteNonQuery();
             }
             catch
